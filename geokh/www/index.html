@@ -16,31 +16,29 @@
     <!-- -------------------------- -->
     <!--            accueil         -->
     <!-- -------------------------- -->
-    <section class="view" id="accueil">
-        <p>
+    <section class="view accueil" id="accueil">
+        <div class="accueil_maincontainer">
+            <img src="img/GeoKH.png" alt="Geok'H" class="accueil_img">
+            <button id="btn_connexion">Jouer</button>
+        </div>
+        <p class="accueil_uc">
             GeoK'H est une application de geocaching proposée par le HubHouse.
-        </p>
-
-        <p>
+            <br><br>
             En jouant une partie vous accepter les <a href="#" id="btn_cgu">conditions générales d'utilisation</a>
         </p>
-
-
-        <button id="btn_connexion">Jouer</button>
-
     </section>
 
     <!-- -------------------------- -->
     <!--            CGU         -->
     <!-- -------------------------- -->
-    <section class="view" id="cgu">
+    <section class="view cgu_container" id="cgu">
 
-        <h1>Conditions d’utilisation</h1>
-
+        <center>
+        <h2>Conditions d’utilisation</h2>
         <p>En accédant à « geok’h », vous acceptez les conditions suivantes.</p>
+        </center>
 
         <h2>Généralités.</h2>
-
         <p>
             Vous êtes légalement responsable du support utilisé et des dommages ou dégâts liés au support et qui
             pourraient intervenir lors du « geok’h ». Il vous est demandé de prendre connaissance et de respecter les
@@ -53,19 +51,18 @@
         </p>
 
         <h2>Respect du matériel et des lieux.</h2>
-        Il est strictement interdit de déplacer des balises de leur lieu initial. De même qu’est strictement interdite
-        la dégradation des balises et des lieux de l’activité. Veillez à oeuvrer dans le respect de l’infrastructure du
-        Campus universitaire de Lille 1. Toute dégradation sera passible de sanctions. Si toutefois vous trouviez une
-        balise hors de son lieu initial, prévenez le HubHouse (numéro disponible sur la surface de la balise).
+        <p>
+            Il est strictement interdit de déplacer des balises de leur lieu initial. De même qu’est strictement interdite
+            la dégradation des balises et des lieux de l’activité. Veillez à oeuvrer dans le respect de l’infrastructure du
+            Campus universitaire de Lille 1. Toute dégradation sera passible de sanctions. Si toutefois vous trouviez une
+            balise hors de son lieu initial, prévenez le HubHouse (numéro disponible sur la surface de la balise).
         </p>
-        <h2>Choix du nom d’équipe.</h2>
 
+        <h2>Choix du nom d’équipe.</h2>
         <p>
             Concernant le nom d’équipe, vous acceptez de ne pas choisir de contenu abusif, obscène, vulgaire,
             diffamatoire, choquant, menaçant, a caractère sexuel ou autre qui peut transgresser les lois en vigueur.
         </p>
-        <br><br>
-
 
         <button id="btn_connexion_cgu">Compris !</button>
 
@@ -77,33 +74,37 @@
     <!-- -------------------------- -->
     <section class="view" id="connexion">
         <form method="post" action="" id="form_connexion">
+
+            <p class="sectionBar">EQUIPE</p>
             <div class="inpt_text">
-                <label for="form_equipe">Equipe : </label>
-                <input type="text" name="form_equipe" id="form_equipe" required>
+                <input type="text" name="form_equipe" id="form_equipe" value="Entrez ici le nom de votre équipe" required
+                       onblur="if (this.value == '') {this.value = 'Entrez ici le nom de votre équipe';}"
+                       onfocus="if (this.value == 'Entrez ici le nom de votre équipe') {this.value = '';}">
             </div>
+
+            <p class="sectionBar">NIVEAU</p>
             <div id="form_niveau" class="form_groupe">
-                <p>Niveau :</p>
-                <input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/><label
-                    for="form_niveau1">Débutant</label>
-                <!--
-                <input type="radio" name="form_niveau" id="form_niveau2" value="2" /><label for="form_niveau2">Avancé</label>
-                -->
+                <input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/>
+				<label for="form_niveau1">DEBUTANT</label>
+
+                <input type="radio" name="form_niveau" id="form_niveau2" value="2" />
+				<label for="form_niveau2">PERFECTIONNEMENT</label>
             </div>
+
+            <p class="sectionBar">PARCOURS</p>
             <div id="form_parcours" class="form_groupe">
-                <p>Parcours :</p>
                 <input type="radio" name="form_parcours" id="form_parcours1" value="1" checked="checked"/>
                 <label for="form_parcours1">1</label>
 
-                <input type="radio" name="form_parcours" id="form_parcours2" value="2"/><label
-                    for="form_parcours2">2</label>
+                <input type="radio" name="form_parcours" id="form_parcours2" value="2"/>
+                <label for="form_parcours2">2</label>
 
-                <input type="radio" name="form_parcours" id="form_parcours3" value="3"/><label
-                    for="form_parcours3">3</label>
-                <!--
-				<input type="radio" name="form_parcours" id="form_parcours4" value="4" /><label for="form_parcours4">4</label>
-                -->
+                <input type="radio" name="form_parcours" id="form_parcours3" value="3"/>
+                <label for="form_parcours3">3</label>
             </div>
+
             <input type="submit" name="submit" value="Lancer la partie" class="form_submit"/>
+
         </form>
     </section>
 
@@ -112,27 +113,29 @@
     <!--   recherche d'une balise   -->
     <!-- -------------------------- -->
     <section class="view" id="compass">
-        <div>
-            <div class="score">
-                <p>Score :</p>
+        <p class="sectionBar">BALISE <span id="numero_balise"></span>/11</p>
 
+        <div>
+            <div class="score third">
+                <p><img src="img/recherche_stars.png" class="img_small" style="width:120px;"></p>
+                <p>SCORE</p>
                 <p class="valeur"><span></span></p>
             </div>
-            <div class="temps">
-                <p>Temps :</p>
 
+            <div class="conseil third">
+                <p><img src="img/recherche_bulb.png" class="img_small"></p>
+                <p>Conseil : </p>
+                <p id="conseilHide" style="color: dimgrey">INDICE CACHE</p>
+            </div>
+
+            <div class="temps third">
+                <p><img src="img/recherche_timer.png" class="img_small"></p>
+                <p>TEMPS</p>
                 <p class="valeur" id="timer"></p>
             </div>
-            <div class="conseil">
-                <p>Balise <span id="numero_balise"></span>/11</p>
 
-                <p>Conseil : </p>
 
-                <strong><p class="valeur" style="color: green">Lorem ipsum sit amet, consectetur adipiscing elit.</p>
-                </strong>
 
-                <p id="conseilHide" style="color: red">Indice caché (distance min : 50m.)</p>
-            </div>
         </div>
 
         <div><img src="img/compass.svg" alt="" id="compass_elt"></div>
@@ -367,8 +370,8 @@
 </section>
 
 <footer>
-
 </footer>
+
 </body>
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/jQueryRotate.min.js"></script>

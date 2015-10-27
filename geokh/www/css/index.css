@@ -18,6 +18,18 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+html {
+    background: url(../img/accueil_bg.jpg) no-repeat 0 100% fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    font-family: "Calibri", "Helvetica Neue Light", "Lucida Grande", "Arial", sans-serif;
+    font-size-adjust: 0.8em;
+}
+
+
 body {
     -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
@@ -29,11 +41,24 @@ body {
     padding: 0px;
 }
 
+
+h2 {
+    color: #e7475e;
+    font-weight: normal;
+    font-size: small;
+}
+
+p {
+    font-weight: normal;
+    font-size: smaller;
+}
+
+
 .app {
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
+    padding: 0;
     right: 0;
 }
 
@@ -59,7 +84,6 @@ body {
     position: absolute;
     top: 120px;
     left: 0;
-    bottom: 0;
     right: 0;
     padding: 14px 28px;
     overflow-x: hidden;
@@ -75,19 +99,17 @@ body {
 
 button,
 input[type='submit'] {
-    margin: 0;
-    text-transform: uppercase;
+
+    position: relative;
+    width: 64%;
+    height: 40px;
     border: none;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    height: 55px;
-    font-size: 110%;
-    width: 100%;
-    font-weight: bold;
-    position: fixed;
+    border-radius: 25px;
+    font-weight: normal;
     background: #38b449;
     color: #ffffff;
+    text-transform: uppercase;
+    alignment: center;
 }
 
 button:active,
@@ -108,19 +130,101 @@ button:disabled {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 0;
-    background: blue;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 8px;    /**hauteur de ton image */
+    width : 100%;    /** Largeur de ton image */
+    background-image:url(../img/footer.jpg);
+    background-size: 100% auto;
 }
+
+
+.sectionBar {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+
+    background-image:-moz-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:-webkit-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:-o-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:linear-gradient(60deg, #ea6621, #e3007e);
+}
+
+
+.img_small {
+    height: 60px;
+    width: 60px;
+}
+
 
 /****************************************/
 /* 2. Accueil                           */
 /****************************************/
+.accueil {
+    color: white;
+    position: relative;
+    overflow-x: visible;
+    overflow-y: visible;
+    top: 0;
+    padding-top: 30%;
+}
+
+.accueil_maincontainer {
+    width: 80%;
+    height: 80%;
+}
+
+.accueil_img {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 #btn_connexion {
-    /*bottom: 50px;*/
+    position: absolute;
+    width: 64%;
+    left: 18%;
+    border-radius: 25px;
+    height: 40px;
+    font-weight: normal;
+    bottom: auto;
+}
+
+.accueil_uc {
+    position: fixed;
+    bottom: 50px;
+    font-size: 80%;
+    margin: auto 20% auto 10%;
+}
+
+.accueil_uc a {
+    color: white;
+}
+
+
+/****************************************/
+/* 2.1 Condition generales d'util       */
+/****************************************/
+#btn_connexion_cgu {
+    position: relative;
+    width: 64%;
+    left: 18%;
+    border-radius: 25px;
+    height: 40px;
+    font-weight: normal;
+    bottom: 40px;
+    margin-top: 50px;
+}
+
+.cgu_container {
+    bottom: 100px;
+    text-align: justify;
+    overflow-x: visible;
+    overflow-y: visible;
 }
 
 /****************************************/
@@ -128,12 +232,13 @@ footer {
 /****************************************/
 #form_connexion .inpt_text,
 #form_connexion .form_groupe {
+    position: relative;
     margin: 20px 0px;
-    text-align: left;
+    text-align: center;
 }
 
 #form_connexion .inpt_text {
-    border: 1px solid #D0D0D0;
+    border: 0px solid #D0D0D0;
     padding: 0 7px;
 }
 
@@ -142,6 +247,8 @@ footer {
     box-shadow: 0 0 0 transparent;
     height: 33px;
     line-height: 33px;
+    text-align: center;
+    width: 100%;
 }
 
 #form_connexion .inpt_text input:focus {
@@ -154,7 +261,6 @@ footer {
 }
 
 #form_connexion .form_groupe {
-    height: 37px;
     line-height: 37px;
 }
 
@@ -165,7 +271,6 @@ footer {
 }
 
 #form_connexion .form_groupe label {
-    height: 37px;
     line-height: 37px;
     display: inline-block;
     margin: 0 13px 0 5px;
@@ -182,6 +287,10 @@ footer {
 /****************************************/
 /* 4. recherche d'une balise            */
 /****************************************/
+.third {
+    width: 33%;
+}
+
 #compass .score,
 #compass .distance {
     float: left;
@@ -198,8 +307,7 @@ footer {
 }
 
 #compass .conseil {
-    clear: both;
-    text-align: center;
+    float: left;
 }
 
 #compass .score p,
@@ -412,3 +520,4 @@ label.error {
 .img_credits {
     width: 90%;
 }
+

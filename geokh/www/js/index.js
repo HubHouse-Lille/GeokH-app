@@ -55,14 +55,25 @@ var app = {
         //cacher tous les indices
         $(".indice").hide();
 
-
         //affichage de la première vue
         this.showView("#accueil");
+
+
+        this.showView("#compass");
+
+
+
     },
     /*
      * Gere l'affichage de la vue demandée.
      */
     showView: function showView(view_id) {
+
+        // On redessine
+        $('html').css("background","url(img/view_bg.png) top right no-repeat fixed");
+        $('html').css("background-size","90% auto");
+        $('header').css("visibility","visible");
+
         $(".view").hide();
         $(view_id).show();
         this.actualView = view_id;
@@ -94,10 +105,34 @@ var app = {
             case "#credits":
                 this.showCreditsView();
                 break;
+            case "#accueil":
+                this.showAccueil();
+                break;
+            case "#cgu":
+                this.showCgu();
+                break;
             default :
                 break;
         }
     },
+
+
+    /*
+     * Affiche correctement la page d'accueil
+     */
+    showAccueil: function showAccueil() {
+        // On redessine
+        $('html').css("background","url(img/accueil_bg.jpg) no-repeat 0 100% fixed");
+        $('header').css("visibility","hidden");
+    },
+
+    /*
+     * Affiche correctement la page de conditions d'utilisation
+     */
+    showCgu: function showCgu() {
+
+    },
+
     /*
      * charge les informations pour la vue de recherche de balise
      */
@@ -142,7 +177,9 @@ var app = {
      */
     showConnexionView: function showConnexionView() {
 
-        this.parcoursOrdre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        $('header').show();
+
+         this.parcoursOrdre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
         $("input[name=form_parcours]").change(function (event) {
             app.parcours = $('input[name=form_parcours]:checked').val();
@@ -490,7 +527,6 @@ window.onload = function () {
         app.showView("#cgu");
     });
 
-
     $('#form_connexion').submit(function (event) {
         app.showView("#compass");
         event.preventDefault();
@@ -506,7 +542,6 @@ window.onload = function () {
         event.preventDefault();
     });
 
-
     $('#form_question').submit(function (event) {
         app.showView("#reponse");
 
@@ -517,7 +552,6 @@ window.onload = function () {
         app.showView("#compass");
         event.preventDefault();
     });
-
 
     $('#btn_compass').click(function () {
         app.showView("#compass");
@@ -577,7 +611,6 @@ function stopwatch() {
     timer.stop().once();
 }
 
-
 function everthingOk() {
     console.log("Insomnia up");
 }
@@ -591,7 +624,6 @@ function onLoad() {
 }
 
 // Cordova is loaded and it is now safe to call Cordova methods
-//
 function onDeviceReady() {
     // Register the event listener
     document.addEventListener("backbutton", onBackKeyDown, false);
@@ -746,7 +778,6 @@ function loadLocalStorage() {
 
 function saveLocalStorage() {
 
-
     window.localStorage.setItem("score", String(app.score));
     window.localStorage.setItem("equipe", String(app.equipe));
     window.localStorage.setItem("niveau", String(app.niveau));
@@ -799,3 +830,4 @@ function onConfirm(button) {
     }
 }
 
+app.initialize();
