@@ -11,7 +11,7 @@ var entrepreneurs = {
         "entrepreneur_1": {
             "nom": "Cornille",
             "prenom": "Charles",
-            "photo": "",
+            "photo": "ent1.png",
             "interview": [
                 {
                     "question": "Peux-tu te présenter ?",
@@ -91,7 +91,7 @@ var entrepreneurs = {
         "entrepreneur_2": {
             "nom": "Ardin",
             "prenom": "Cindy",
-            "photo": "",
+            "photo": "ent2.png",
             "interview": [
                 {
                     "question": "Peux-tu te présenter ?",
@@ -171,7 +171,7 @@ var entrepreneurs = {
         "entrepreneur_3": {
             "nom": "Mathie",
             "prenom": "Maud",
-            "photo": "",
+            "photo": "ent3.png",
             "interview": [
                 {
                     "question": "Peux-tu te présenter ?",

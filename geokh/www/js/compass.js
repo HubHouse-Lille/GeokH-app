@@ -9,6 +9,9 @@ compass.data.position = {};
 compass.data.actualPosition = {};
 compass.data.heading = {};
 
+var compassLocActi = false;
+var compassOriActi = false;
+
 compass.data.destination = {};
 var idWatchLoc = 0;
 var idWatchOrient = 0;
@@ -25,8 +28,8 @@ compass.onSuccessLocation = function onSuccessLocation(_position) {
 
     actualPosition = new LatLon(compass.data.position.coords.latitude, compass.data.position.coords.longitude);
     app.updateDistance(Math.round(actualPosition.distanceTo(compass.data.destination) * 1000));
-
 }
+
 compass.onErrorLocation = function onErrorLocation(error) {
     countErrorsLoc++;
     if (countErrorsLoc == 3) {
@@ -35,12 +38,12 @@ compass.onErrorLocation = function onErrorLocation(error) {
     }
 }
 
-
 compass.onSuccessOrientation = function onSuccessOrientation(_heading) {
     compass.data.heading = _heading;
     var angle = actualPosition.bearingTo(compass.data.destination) - compass.data.heading.magneticHeading
     app.rotate(Math.round(angle));
 };
+
 compass.onErrorOrientation = function onErrorOrientation(error) {
     countErrorsOr++;
     if (countErrorsOr == 3) {
@@ -50,28 +53,31 @@ compass.onErrorOrientation = function onErrorOrientation(error) {
     }
 };
 
+// LOCATION
 compass.stopLocation = function stopLocation() {
     navigator.geolocation.clearWatch(idWatchLoc);
     countErrorsLoc = 0;
+    compassLocActi = false;
 };
-
 
 compass.activateLocation = function activateLocation() {
     if (navigator.geolocation) {
-
         var options = {maximumAge: 0, timeout: updateTimer, enableHighAccuracy: true};
         idWatchLoc = navigator.geolocation.watchPosition(compass.onSuccessLocation,
             compass.onErrorLocation,
             options);
+        compassLocActi = true;
     } else {
         navigator.notification.alert('Localisation non disponible', function () {
         }, 'Erreur', 'Ok');
     }
 };
 
+// ORIENTATION
 compass.stopOrientation = function stopOrientation() {
     navigator.compass.clearWatch(idWatchOrient);
     countErrorsOr = 0;
+    compassOriActi = false
 };
 
 compass.activateOrientation = function activateOrientation() {
@@ -81,8 +87,10 @@ compass.activateOrientation = function activateOrientation() {
         }; // Update every .5 seconds
         idWatchOrient = navigator.compass.watchHeading(compass.onSuccessOrientation,
             compass.onErrorOrientation, options);
-    } else {
+        compassOriActi = true;
+    } // TODO : remettre les notifications pour l'app
+    /* else {
         navigator.notification.alert('Orientation non disponible', function () {
         }, 'Erreur', 'Ok');
-    }
+    } */
 };

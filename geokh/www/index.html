@@ -84,15 +84,71 @@
 
             <p class="sectionBar">NIVEAU</p>
             <div id="form_niveau" class="form_groupe">
-                <input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/>
-				<label for="form_niveau1">DEBUTANT</label>
 
-                <input type="radio" name="form_niveau" id="form_niveau2" value="2" />
-				<label for="form_niveau2">PERFECTIONNEMENT</label>
+                <table class="reponses" style="width:100%">
+                    <tbody>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpniveau" value="valuable" id="lpmodedeb" type="radio" checked>
+                            <label for="lpmodedeb"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">DEBUTANT</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpniveau" value="valuable" id="lpmodeper" type="radio">
+                            <label for="lpmodeper"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">PERFECTIONNEMENT</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--<input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/>
+				    <label for="form_niveau1">DEBUTANT</label>
+                    <input type="radio" name="form_niveau" id="form_niveau2" value="2" />
+				    <label for="form_niveau2">PERFECTIONNEMENT</label>-->
             </div>
 
             <p class="sectionBar">PARCOURS</p>
             <div id="form_parcours" class="form_groupe">
+
+                <table class="reponses" style="width:100%">
+                    <tbody>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp1" type="radio" checked>
+                            <label for="lpp1"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 1</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp2" type="radio">
+                            <label for="lpp2"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 2</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp3" type="radio">
+                            <label for="lpp3"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 3</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--
                 <input type="radio" name="form_parcours" id="form_parcours1" value="1" checked="checked"/>
                 <label for="form_parcours1">1</label>
 
@@ -101,6 +157,7 @@
 
                 <input type="radio" name="form_parcours" id="form_parcours3" value="3"/>
                 <label for="form_parcours3">3</label>
+                -->
             </div>
 
             <input type="submit" name="submit" value="Lancer la partie" class="form_submit"/>
@@ -113,49 +170,52 @@
     <!--   recherche d'une balise   -->
     <!-- -------------------------- -->
     <section class="view" id="compass">
-        <p class="sectionBar">BALISE <span id="numero_balise"></span>/11</p>
+        <p class="sectionBar sectionBar_fullsize">BALISE <span></span></p>
 
-        <div>
+        <div style="position: relative">
             <div class="score third">
-                <p><img src="img/recherche_stars.png" class="img_small" style="width:120px;"></p>
+                <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
                 <p>SCORE</p>
-                <p class="valeur"><span></span></p>
+                <p class="valeur"><span id="rb_score">0</span></p>
             </div>
 
             <div class="conseil third">
-                <p><img src="img/recherche_bulb.png" class="img_small"></p>
-                <p>Conseil : </p>
-                <p id="conseilHide" style="color: dimgrey">INDICE CACHE</p>
+                <p><img src="img/recherche_bulb.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>INDICE CACHE</p>
+                <p class="valeur valRecherche"><span id="conseilHide">null</span></p>
             </div>
 
             <div class="temps third">
-                <p><img src="img/recherche_timer.png" class="img_small"></p>
-                <p>TEMPS</p>
-                <p class="valeur" id="timer"></p>
+                <p><img src="img/recherche_timer.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>TEMPS</p><span id="timer" class="valRecherche">00:00:00</span></p>
             </div>
-
-
 
         </div>
 
-        <div><img src="img/compass.svg" alt="" id="compass_elt"></div>
+        <div style="margin-top: 135px;">
+            <div style="position:relative; background: url(img/compas_bg.png) no-repeat 0% 0% / 100% auto; ">
+                <img src="img/compas_indic.png" alt="" id="compass_elt">
+            </div>
+        </div>
+
+
+        <div style="width: 100%;">
+            <div class="distance" style="width: 33%; float: left">
+                <p><img src="img/recherche_distance.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>DISTANCE</p>
+                <p class="valeur valRecherche"><span>...</span> m</p>
+            </div>
+            <div style="width: 34%; float: left"></div>
+            <div class="precision" style="width: 33%; float: right">
+                <p><img src="img/recherche_precision.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>PRECISION</p>
+                <p class="valeur valRecherche"><span>...</span> m</p>
+            </div>
+        </div>
         <div>
-            <div class="distance">
-                <p>Distance :</p>
-
-                <p class="valeur"><span>XXX</span> m</p>
-            </div>
-            <div class="precision">
-                <p>Précision :</p>
-
-                <p class="valeur"><span>XXX</span> m</p>
-            </div>
+            <button id="btn_pass" class="left" style="width: 45%; float:left;"><p>Passer la balise</p></button>
+            <button id="btn_flash" class="right" style="width: 45%; float:right;"><p>Flasher le code</p></button>
         </div>
-
-        <button id="btn_pass" class="left">Passer la balise</button>
-        <button id="btn_flash" class="right">Flasher le code</button>
-
-
     </section>
 
     <!-- -------------------------- -->
@@ -164,19 +224,92 @@
     <section class="view" id="qr_code">
         <div id="qr_code_result">
         </div>
+
         <button id="btn_question">Confirmer</button>
         <button id="btn_entrepreneurs">J'ai fini !</button>
         <button id="btn_compass_retour">Retour</button>
     </section>
+    <!--<section class="view" id="qr_code">
+    <p class="sectionBar sectionBar_fullsize">QUESTION</p>
 
+    <div style="position: relative">
+        <div class="score third">
+            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+            <p>SCORE</p>
+            <p class="valeur"><span id="rb_score">0</span></p>
+        </div>
+
+        <div class="conseil third">
+        </div>
+
+        <div class="temps third">
+            <p><img src="img/recherche_timer.png" class="img_small" style="width:50px;height:50px;"></p>
+            <p>TEMPS</p><span id="difficulte" class="valRecherche">00:00:00</span></p>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 135px;">
+        <h2><b>COCHEZ LA OU LES BONNES REPONSES</b></h2>
+
+        <input id="option" type="checkbox" name="field" value="option">
+        <label for="option">Value</label>
+    </div>
+
+    <div>
+        <button id="btn_pass" class="left" style="width: 45%; float:left;"><p>PARIER</p></button>
+        <button id="btn_flash" class="right" style="width: 45%; float:right;"><p>REPONDRE</p></button>
+    </div>
+</section>
+-->
 
     <!-- -------------------------- -->
     <!--   question d'une balise    -->
     <!-- -------------------------- -->
     <section class="view" id="question">
+        <p class="sectionBar sectionBar_fullsize">QUESTION(S)</p>
+
+        <div style="position: relative">
+            <div class="score third">
+                <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+                <p>SCORE</p>
+                <p class="valeur"><span></span></p>
+            </div>
+
+            <div class="third">
+            </div>
+
+            <div class="difficulte third">
+                <p><img src="img/question_warning.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p class="valeur">DIFFICULTE</p><span id="warning" class="valRecherche"></span></p>
+            </div>
+        </div>
+
+        <div class="ref_qbeq" style="margin-top: 135px; text-align: left;">
+            <h2>QUESTION</h2>
+            <p class="valeur"><span></span></p>
+
+            <h2>COCHEZ LA OU LES BONNES REPONSES</h2>
+            <form method="post" action="" id="form_question">
+                <table class="reponses" style="width:100%">
+                </table>
+                <div class="pari">
+                    <select name="form_pari" id="form_pari">
+                        <option value="" disabled selected>PARIER SUR VOTRE REPONSE</option>
+                        <!--<option value="0">0</option>-->
+                        <option value="50"> 50 PTS</option>
+                        <option value="100">100 PTS</option>
+                        <option value="150">150 PTS</option>
+                    </select>
+                    <input type="submit" name="submit" value="Répondre" class="form_submit"/>
+                </div>
+            </form>
+        </div>
+
+    </section>
+    <!--<section class="view" id="question">
         <div class="score">
             <p>Score :</p>
-
             <p class="valeur"><span></span></p>
         </div>
         <div class="difficulte">
@@ -205,7 +338,42 @@
                 <input type="submit" name="submit" value="Répondre" class="form_submit"/>
             </div>
         </form>
-    </section>
+    </section>-->
+
+
+    <!-- -------------------------- -->
+    <!--   Question entrepreneur    -->
+    <!-- -------------------------- -->
+    <!--<section class="view" id="questionEnt">
+        <p class="sectionBar sectionBar_fullsize">QUESTION(S)</p>
+
+        <div style="position: relative">
+            <div class="score third">
+                <p><img src="img/ent1.png" class="img_small" style="width:100px;height:50px;"
+                        onclick="hide('qe2');show('qe1')"></p>
+            </div>
+
+            <div class="third">
+                <p><img src="img/ent2.png" class="img_small" style="width:100px;height:50px;"
+                        onclick="hide('qe1');show('qe2')"></p>
+            </div>
+
+            <div class="difficulte third">
+                <p><img src="img/ent3.png" class="img_small" style="width:50px;height:50px;"></p>
+            </div>
+        </div>
+
+        <div class="desc" style="margin-top: 135px; text-align: left;">
+
+            <p id="qe1">Cocou les loulous :)</p>
+            <p id="qe2">Cocou les loulous 2</p>
+            <!--
+            <h2>QUESTION</h2>
+            <p class="valeur"><span></span></p>
+            --
+        </div>
+
+    </section>-->
 
 
     <!-- ---------------------------------- -->
@@ -213,32 +381,33 @@
     <!-- ---------------------------------- -->
     <section class="view" id="reponse">
         <div class="correction">
-            <p class="correct">Bonne réponse.</p>
+            <p class="sectionBar sectionBar_fullsize correct">Bonne réponse.</p>
 
-            <p class="partial">Bonne réponse mais incomplète.</p>
+            <p class="sectionBar sectionBar_fullsize partial">Bonne réponse mais incomplète.</p>
 
-            <p class="errone">Mauvaise réponse.</p>
+            <p class="sectionBar sectionBar_fullsize errone">Mauvaise réponse.</p>
         </div>
-        <div class="score">
-            <p>Score :</p>
 
-            <p class="valeur"><span>XXXX</span></p>
-
-            <p> points</p>
-
-            <p class="bonus correct">+<span>XXX</span></p>
+        <div class="score" style="position: relative; text-align: center;">
+            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+            <p class="gain"><span></span></p>
+            <p class="valeur"><span>0</span></p>
         </div>
+
         <div class="retour">
-            <p class="correct">Complément :</p>
+            <h2 class="correct">COMPLEMENT D'INFORMATION :</h2>
 
-            <p class="errone">Réponse :</p>
+            <h2 class="errone">VOICI LA BONNE REPONSE :</h2>
 
             <p class="valeur"></p>
 
             <p class="indice" id="reponse_indice"></p>
 
             <!--<button class="left" id="modal_reponse" disabled="disabled">voir l'indice</button> -->
-            <button id="btn_compass">Continuer</button>
+            <div style="text-align: center; margin-top:20px;">
+                <button id="btn_compass" class="btn_question">Continuer</button>
+            </div>
+
         </div>
     </section>
 
@@ -256,48 +425,49 @@
             </div>
             <br>
             <br>
-            <br>
-            <br>
 
             <p class="indice" id="all_founded_indice"></p>
+
             <button class="indices left" id="modal_all_indice" disabled="disabled">voir les indices</button>
             <button class="right" id="btn_entrepreneur_mystere">C'est cet entrepreneur</button>
+            <br>
+            <br>
         </div>
     </section>
 
 
     <!-- ---------------------------------- -->
     <!--      l'entrepreneur mystere        -->
+    <!--    Lorsque la réponse est -->
     <!-- ---------------------------------- -->
     <section class="view" id="entrepreneur_mystere">
-        <div class="correction">
-            <p class="correct">Bonne réponse.</p>
 
-            <p class="errone">Mauvaise réponse.</p>
+        <div class="correction sectionBar sectionBar_fullsize">
+            <p class="correct">BONNE REPONSE</p>
+            <p class="errone">MAUVAISE REPONSE</p>
         </div>
-        <p>L'entrepreneur mystère est : </p>
 
-        <div class="ent_presentation">
-            <img src="img/user.svg" alt="" class="ent_img"/>
+        <br>
+        <br>
 
-            <p class="ent_nom"></p>
-
-            <p class="ent_prenom"></p>
+        <div class="ents_miniature">
+            <div class="ent_min"></div>
+            <img src="" class="ent_presentation_img ent_min" style="width:30%; height:auto;">
+            <div class="ent_min"></div>
         </div>
-        <p>Les informations : </p>
 
-        <div class="slideshow">
+        <h2 class="ent_presentation_nom"><span style="color:#909090">L'entrepreneur est </span><span class="embs"></span></h2>
+        <br>
 
-        </div>
         <div class="score">
-            <p>Score :</p>
-
-            <p class="bonus">+<span>XXX</span></p>
-
-            <p class="valeur"><span>XXXX</span></p>
-
-            <p> points</p>
+            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+            <h2 class="bonus"><span style="color:#909090">+ <span class="bonus">XXX</span> points pour la bonne reponse</span></h2>
+            <p class="valeur"><span>XXX</span></p>
         </div>
+
+        <br>
+        <br>
+
         <button id="btn_scores">Voir les scores</button>
     </section>
 
@@ -306,39 +476,44 @@
     <!--            Scores finaux           -->
     <!-- ---------------------------------- -->
     <section class="view" id="scores">
-        <p>Scores :</p>
 
-        <p class="niveau">
-            <span>Niveau </span>
-            <span class="valeur">x</span>
-        </p>
+        <h2 class="sectionBar sectionBar_fullsize">les Scores</h2>
 
-        <p class="temps">
-            <span>Temps </span>
-            <span class="valeur" id="timer_final"></span>
-        </p>
+        <div style="margin: auto; width: auto;">
 
-        <p class="balises">
-            <span>Balises </span>
-            <span class="valeur">XX</span> /
-            <span class="maximum">XX</span>
-        </p>
+            <p class="niveau">
+                <span>Niveau </span>
+                <span class="valeur">x</span>
+            </p>
 
-        <p class="reponses">
-            <span>Bonnes réponses </span>
-            <span class="valeur">XX </span> /
-            <span class="maximum">XX</span>
-        </p>
-        <!--<p class="paris">
-            <span>Paris </span>
-            <span class="valeur">XXXXX</span>
-        </p>-->
-        <p class="points">
-            <span>Points </span>
-            <span class="valeur">XXXXXX</span>
-        </p>
-        <button class="stats modal" disabled="disabled">mes statistiques</button>
-        <button id="btn_credits">Finir la partie</button>
+            <p class="temps">
+                <span>Temps </span>
+                <span class="valeur" id="timer_final"></span>
+            </p>
+
+            <p class="balises">
+                <span>Balises </span>
+                <span class="valeur">XX</span> /
+                <span class="maximum">XX</span>
+            </p>
+
+            <p class="reponses">
+                <span>Bonnes réponses </span>
+                <span class="valeur">XX </span> /
+                <span class="maximum">XX</span>
+            </p>
+            <!--<p class="paris">
+                <span>Paris </span>
+                <span class="valeur">XXXXX</span>
+            </p>-->
+            <p class="points">
+                <span>Points </span>
+                <span class="valeur">XXXXXX</span>
+            </p>
+
+            <!--<button class="stats modal" disabled="disabled">mes statistiques</button>-->
+            <button id="btn_credits">Finir la partie</button>
+        </div>
     </section>
 
 
@@ -355,7 +530,7 @@
         <h3>Développeurs</h3>
 
         <div class="dev">
-
+            Durieu Jean-Vital <br>
             Antoine Durigneux <br>
             Quentin Coët<br>
             Pauline Goblot<br>
@@ -377,10 +552,13 @@
 <script type="text/javascript" src="js/jQueryRotate.min.js"></script>
 <script type="text/javascript" src="js/jquery.timer.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/balises.js"></script>
-<script type="text/javascript" src="js/entrepreneurs.js"></script>
-<script type="text/javascript" src="js/questions.js"></script>
+<script type="text/javascript" src="js/data_balises.js"></script>
+<script type="text/javascript" src="js/data_entrepreneurs.js"></script>
+<script type="text/javascript" src="js/data_questions.js"></script>
+<script type="text/javascript" src="js/data_parcours.js"></script>
 <script type="text/javascript" src="js/geodesie.js"></script>
 <script type="text/javascript" src="js/compass.js"></script>
+
+<script type="text/javascript" src="js/eventHandler.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </html>

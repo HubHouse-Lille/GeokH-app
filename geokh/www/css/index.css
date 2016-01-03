@@ -46,6 +46,7 @@ h2 {
     color: #e7475e;
     font-weight: normal;
     font-size: small;
+    text-transform: uppercase;
 }
 
 p {
@@ -82,7 +83,7 @@ p {
 
 .view {
     position: absolute;
-    top: 120px;
+    top: 100px;
     left: 0;
     right: 0;
     padding: 14px 28px;
@@ -118,15 +119,15 @@ input[type='submit']:active {
 }
 
 button:disabled {
-    background: #2c7f3b;
+    background: #909090;
 }
 
 .correction .errone {
-    color: #d71920;
+    background-image: linear-gradient(60deg, #e74b47 , #e74b47);
 }
 
 .correction .correct {
-    color: #38b449;
+    background-image: linear-gradient(60deg, #37b34a, #37b34a);
 }
 
 footer {
@@ -147,6 +148,8 @@ footer {
     vertical-align: middle;
     text-align: center;
     color: white;
+    font-size: large;
+    font-weight: bold;
 
     background-image:-moz-linear-gradient(30deg, #ea6621, #e3007e);
     background-image:-webkit-linear-gradient(30deg, #ea6621, #e3007e);
@@ -154,6 +157,10 @@ footer {
     background-image:linear-gradient(60deg, #ea6621, #e3007e);
 }
 
+.sectionBar_fullsize {
+    margin-left: -10%;
+    width: 120%;
+}
 
 .img_small {
     height: 60px;
@@ -291,6 +298,10 @@ footer {
     width: 33%;
 }
 
+#compass {
+    padding-bottom: 30px;
+}
+
 #compass .score,
 #compass .distance {
     float: left;
@@ -301,10 +312,10 @@ footer {
     float: right;
 }
 
-#compass .distance,
+/*#compass .distance,
 #compass .precision {
     margin: 0px 0 45px 0;
-}
+}*/
 
 #compass .conseil {
     float: left;
@@ -323,6 +334,13 @@ footer {
 #compass .distance p.valeur,
 #compass .precision p.valeur {
     margin: 5px 0 10px;
+    font-weight: 600;
+    font-size: large;
+}
+
+#compass .score p.valeur {
+    color: #f0a424;
+
 }
 
 #compass .conseil p.valeur {
@@ -331,11 +349,23 @@ footer {
 
 #compass_elt {
     clear: both;
+    width: 100%;
+}
+
+#compass_elt_fix {
+    clear: both;
     width: 80%;
+    z-index: -2;
 }
 
 #btn_flash {
     /*bottom: 0;*/
+}
+
+.valRecherche {
+    color: dimgrey;
+    font-size: medium;
+    font-weight: bold;
 }
 
 /****************************************/
@@ -393,13 +423,84 @@ footer {
 }
 
 #form_question #form_pari {
-    width: 75px;
-    height: 36px;
-    padding: 0 10px;
+    width: 80%;
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 20px;
 }
 
 #form_question input[type="submit"] {
     bottom: 0;
+}
+
+.questiontxt {
+    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.cb_unchecked {
+    background-image: url(../img/cb_checked.png) no-repeat;
+    height: 35px;
+    width: 35px;
+    padding: 0 0 0 0px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.cb_unchecked {
+    background-image: url(../img/cb_unchecked.png) no-repeat;
+    display: block;
+    clear: left;
+    float: left;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label
+{
+    background-image: url(../img/cb_unchecked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+input[type=checkbox]:checked + label
+{
+    background-image: url(../img/cb_checked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+
+input[type=radio] {
+    display:none;
+}
+
+input[type=radio] + label
+{
+    background-image: url(../img/cb_unchecked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+input[type=radio]:checked + label
+{
+    background-image: url(../img/cb_checked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+.cb-col {
+    padding-right: 10px;
 }
 
 /*****************************************/
@@ -439,8 +540,7 @@ footer {
 }
 
 .right {
-    width: 50%;
-    left: 50%;
+    width: 45%;
     border-top-style: none;
     border-right-style: none;
     border-bottom-style: none;
@@ -448,8 +548,7 @@ footer {
 }
 
 .left {
-    width: 50%;
-
+    width: 45%;
 }
 
 /*****************************************/
@@ -457,11 +556,13 @@ footer {
 /*****************************************/
 #entrepreneurs .ent_min {
     margin: 7px 14px;
+    height: 25%;
+    width: 25%;
 }
 
-#entrepreneurs .ents_miniatures a {
+/*#entrepreneurs .ents_miniatures a {
     display: inline-block;
-}
+}*/
 
 #entrepreneurs .ent_question {
     font-weight: bold;
