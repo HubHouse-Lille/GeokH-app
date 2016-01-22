@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hubhouse.geokh" version="1.0.1" xmlns="http://www.w3.org/ns/widgets">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <feature name="Insomnia">
+        <param name="android-package" value="nl.xservices.plugins.Insomnia" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <name>GeokH</name>
+    <author email="olivier.lanselle@univ-lille1.fr" href="http://hubhouse.univ-lille1.fr/Accueil/">
+        Equipe HubHouse.
+    </author>
+    <description>
+        GeoK'H est une application de geocatching proposée par le Hubhouse.
+    </description>
+    <content src="index.html" />
+    <access origin="*" />
+    <icon density="ldpi" platform="android" src="www/img/logo.png" />
+    <icon density="mdpi" platform="android" src="www/img/logo.png" />
+    <icon density="hdpi" platform="android" src="www/img/logo.png" />
+    <icon density="xhdpi" platform="android" src="www/img/logo.png" />
+    <preference name="orientation" value="portrait" />
+</widget>

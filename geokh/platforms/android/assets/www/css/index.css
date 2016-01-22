@@ -1,0 +1,628 @@
+/**
+ * Style de l'application GeoK'H
+ * Auteurs : DURIEU JEAN-VITAL, Goblot Pauline et Bauduin Raphael
+ * 
+ * Organisation : 
+ * 1. General
+ * 2. Accueil
+ * 3. Lancement d'une partie
+ * 4. recherche d'une balise
+ * 5. question d'une balise
+ * 6. reponse à la question d'une balise
+ */
+
+/****************************************/
+/* 1. General                           */
+/****************************************/
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html {
+    background: url(../img/accueil_bg.png) no-repeat 0 100% fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    font-family: "Calibri", "Helvetica Neue Light", "Lucida Grande", "Arial", sans-serif;
+    font-size-adjust: 0.8em;
+}
+
+
+body {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+h2 {
+    color: #e7475e;
+    font-weight: normal;
+    font-size: small;
+    text-transform: uppercase;
+}
+
+p {
+    font-weight: normal;
+    font-size: smaller;
+}
+
+
+.app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    right: 0;
+}
+
+.app header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    height: 120px;
+}
+
+.app header h1 {
+    margin: 0;
+}
+
+.app header img {
+    height: 100px;
+    padding: 10px 0;
+}
+
+.view {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    padding: 14px 28px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    text-align: center;
+}
+
+.dev {
+    text-align: center;
+}
+
+button,
+input[type='submit'] {
+
+    position: relative;
+    width: 64%;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    font-weight: normal;
+    background: #38b449;
+    color: #ffffff;
+    text-transform: uppercase;
+    alignment: center;
+}
+
+button:active,
+input[type='submit']:active {
+    background: #2da038;
+}
+
+button:disabled {
+    background: #909090;
+}
+
+.btnpassive {
+    background: #909090;
+}
+
+.correction .errone {
+    background-image: linear-gradient(60deg, #e74b47 , #e74b47);
+}
+
+.correction .correct {
+    background-image: linear-gradient(60deg, #37b34a, #37b34a);
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 8px;    /**hauteur de ton image */
+    width : 100%;    /** Largeur de ton image */
+    background-image:url(../img/footer.jpg);
+    background-size: 100% auto;
+}
+
+
+.sectionBar {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+
+    background-image:-moz-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:-webkit-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:-o-linear-gradient(30deg, #ea6621, #e3007e);
+    background-image:linear-gradient(60deg, #ea6621, #e3007e);
+}
+
+.sectionBar_fullsize {
+    margin-left: -10%;
+    width: 120%;
+}
+
+.img_small {
+    height: 60px;
+    width: 60px;
+}
+
+
+/****************************************/
+/* 2. Accueil                           */
+/****************************************/
+.accueil {
+    color: white;
+    position: relative;
+    overflow-x: visible;
+    overflow-y: visible;
+    top: 0;
+    padding-top: 30%;
+}
+
+.accueil_maincontainer {
+    width: 80%;
+    height: 80%;
+}
+
+.accueil_img {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#btn_connexion {
+    position: absolute;
+    width: 64%;
+    left: 18%;
+    border-radius: 25px;
+    height: 40px;
+    font-weight: normal;
+    bottom: auto;
+}
+
+.accueil_uc {
+    position: fixed;
+    bottom: 50px;
+    font-size: 80%;
+    margin: auto 20% auto 10%;
+}
+
+.accueil_uc a {
+    color: white;
+}
+
+
+/****************************************/
+/* 2.1 Condition generales d'util       */
+/****************************************/
+#btn_connexion_cgu {
+    position: relative;
+    width: 64%;
+    left: 18%;
+    border-radius: 25px;
+    height: 40px;
+    font-weight: normal;
+    bottom: 40px;
+    margin-top: 50px;
+}
+
+.cgu_container {
+    bottom: 100px;
+    text-align: justify;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+/****************************************/
+/* 3. Lancement d'une partie            */
+/****************************************/
+#form_connexion .inpt_text,
+#form_connexion .form_groupe {
+    position: relative;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+#form_connexion .inpt_text {
+    border: 0px solid #D0D0D0;
+    padding: 0 7px;
+}
+
+#form_connexion .inpt_text input {
+    border: 0;
+    box-shadow: 0 0 0 transparent;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    width: 100%;
+}
+
+#form_connexion .inpt_text input:focus {
+    outline: 0;
+}
+
+#form_connexion .inpt_text label {
+    display: inline-block;
+    width: 65px;
+}
+
+#form_connexion .form_groupe {
+    line-height: 37px;
+}
+
+#form_connexion .form_groupe p {
+    margin: 0 0 0 8px;
+    display: inline-block;
+    width: 65px;
+}
+
+#form_connexion .form_groupe label {
+    line-height: 37px;
+    display: inline-block;
+    margin: 0 13px 0 5px;
+}
+
+#form_connexion #form_parcours.form_groupe label {
+    margin: 0 8px 0 4px;
+}
+
+#form_connexion input[type='submit'] {
+    /*bottom: 50px;*/
+}
+
+/****************************************/
+/* 4. recherche d'une balise            */
+/****************************************/
+.third {
+    width: 33%;
+}
+
+#compass {
+    padding-bottom: 30px;
+}
+
+#compass .score,
+#compass .distance {
+    float: left;
+}
+
+#compass .temps,
+#compass .precision {
+    float: right;
+}
+
+/*#compass .distance,
+#compass .precision {
+    margin: 0px 0 45px 0;
+}*/
+
+#compass .conseil {
+    float: left;
+}
+
+#compass .score p,
+#compass .temps p,
+#compass .conseil p,
+#compass .distance p,
+#compass .precision p {
+    margin: 0 0 7px;
+}
+
+#compass .score p.valeur,
+#compass .temps p.valeur,
+#compass .distance p.valeur,
+#compass .precision p.valeur {
+    margin: 5px 0 10px;
+    font-weight: 600;
+    font-size: large;
+}
+
+#compass .score p.valeur {
+    color: #f0a424;
+
+}
+
+#compass .conseil p.valeur {
+    margin: 5px 0;
+}
+
+#compass_elt {
+    clear: both;
+    width: 100%;
+}
+
+#compass_elt_fix {
+    clear: both;
+    width: 80%;
+    z-index: -2;
+}
+
+#btn_flash {
+    /*bottom: 0;*/
+}
+
+.valRecherche {
+    color: dimgrey;
+    font-size: medium;
+    font-weight: bold;
+}
+
+/****************************************/
+/* 5. question d'une balise             */
+/****************************************/
+#question .score {
+    float: left;
+}
+
+#question .difficulte {
+    float: right;
+}
+
+#question .lib_question {
+    clear: both;
+    text-align: left;
+}
+
+#question .score p,
+#question .difficulte p,
+#question .lib_question p {
+    margin: 0 0 7px;
+}
+
+#question .score p.valeur,
+#question .difficulte p.valeur,
+#question .lib_question p.valeur {
+    margin: 5px 0 10px;
+}
+
+#form_question {
+    text-align: left;
+    margin: 0 0 50px 0;
+}
+
+#form_question .form_groupe {
+    margin: 7px 0;
+}
+
+#form_question .form_groupe input {
+    margin: 7px 7px 0 0;
+}
+
+#form_question .pari {
+    margin: 14px 0;
+    text-align: center;
+}
+
+#form_question .pari label {
+    margin: 0 10px 0 0;
+}
+
+#form_question .pari span {
+    margin: 0 0 0 10px;
+}
+
+#form_question #form_pari {
+    width: 80%;
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+#form_question input[type="submit"] {
+    bottom: 0;
+}
+
+.questiontxt {
+    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.cb_unchecked {
+    background-image: url(../img/cb_checked.png) no-repeat;
+    height: 35px;
+    width: 35px;
+    padding: 0 0 0 0px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.cb_unchecked {
+    background-image: url(../img/cb_unchecked.png) no-repeat;
+    display: block;
+    clear: left;
+    float: left;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label
+{
+    background-image: url(../img/cb_unchecked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+input[type=checkbox]:checked + label
+{
+    background-image: url(../img/cb_checked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+
+input[type=radio] {
+    display:none;
+}
+
+input[type=radio] + label
+{
+    background-image: url(../img/cb_unchecked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+input[type=radio]:checked + label
+{
+    background-image: url(../img/cb_checked.png);
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+.cb-col {
+    padding-right: 10px;
+}
+
+/*****************************************/
+/* 6. reponse à la question d'une balise */
+/*****************************************/
+#reponse .score .valeur,
+#reponse .score .valeur + p {
+    display: inline-block;
+    margin: 3px;
+}
+
+#reponse .score p:first-child {
+    margin: 0;
+}
+
+#reponse .bonus.correct {
+    margin: 0;
+}
+
+#reponse .retour {
+    text-align: left;
+    margin: 0 0 45px 0;
+}
+
+#reponse .retour .correct,
+#reponse .retour .errone {
+    margin: 12px 0 6px;
+}
+
+#reponse .retour .valeur {
+    margin: 0;
+}
+
+#reponse .retour ul {
+    margin: 5px 0;
+    padding: 0 0 0 18px;
+}
+
+.right {
+    width: 45%;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left: solid #2c7f3b;
+}
+
+.left {
+    width: 45%;
+}
+
+/*****************************************/
+/* 7. listes des entrepreneurs           */
+/*****************************************/
+#entrepreneurs .ent_min {
+    margin: 7px 14px;
+    height: 25%;
+    width: 25%;
+}
+
+/*#entrepreneurs .ents_miniatures a {
+    display: inline-block;
+}*/
+
+#entrepreneurs .ent_question {
+    font-weight: bold;
+}
+
+#entrepreneurs #ents_presentation {
+    text-align: left;
+}
+
+#entrepreneurs .ent_nom {
+    text-align: center;
+    font-size: 1.3em;
+    margin: 0;
+}
+
+/*****************************************/
+/* 8. l'entrepreneur mystere             */
+/*****************************************/
+#entrepreneur_mystere .ent_img {
+    margin: 7px 50px;
+}
+
+/*****************************************/
+/* 9. Scores finaux                      */
+/*****************************************/
+#scores {
+    text-align: left;
+}
+
+#scores p:first-child {
+    /*text-align: center;*/
+    font-weight: bold;
+}
+
+#scores .valeur {
+    text-align: right;
+    display: inline-block;
+}
+
+#scores p span:first-child {
+    display: inline-block;
+    width: 250px;
+}
+
+/* error */
+input.error {
+    background: red;
+    color: white;
+}
+
+label.error {
+    color: red;
+}
+
+/*credits*/
+.img_credits {
+    width: 90%;
+}
+

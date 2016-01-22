@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <title>GeoK'H</title>
+</head>
+<body>
+<section class="app">
+    <header>
+        <h1><img src="img/GeoKH.png" alt="Geok'H"></h1>
+    </header>
+    <!-- -------------------------- -->
+    <!--            accueil         -->
+    <!-- -------------------------- -->
+    <section class="view accueil" id="accueil">
+        <div class="accueil_maincontainer">
+            <img src="img/GeoKH.png" alt="Geok'H" class="accueil_img">
+            <button id="btn_connexion">Jouer</button>
+        </div>
+        <p class="accueil_uc">
+            GeoK'H est une application de geocaching propos&eacute;e par le HubHouse.
+            <br><br>
+            En jouant une partie vous accepter les <a href="#" id="btn_cgu">conditions g&eacute;n&eacute;rales d'utilisation</a>
+        </p>
+    </section>
+
+    <!-- -------------------------- -->
+    <!--            CGU         -->
+    <!-- -------------------------- -->
+    <section class="view cgu_container" id="cgu">
+
+        <center>
+        <h2>Conditions d’utilisation</h2>
+        <p>En acc&eacute;dant &agrave; « geok’h », vous acceptez les conditions suivantes.</p>
+        </center>
+
+        <h2>G&eacute;n&eacute;ralit&eacute;s.</h2>
+        <p>
+            Vous êtes l&eacute;galement responsable du support utilis&eacute; et des dommages ou d&eacute;gâts li&eacute;s au support et qui
+            pourraient intervenir lors du « geok’h ». Il vous est demand&eacute; de prendre connaissance et de respecter les
+            r&egrave;gles du jeu.
+            L’application « geok’h » est gratuite mais ne saurait être utilis&eacute;e pour une fonction autre que celle pour
+            laquelle elle a &eacute;t&eacute; conçue. Il est formellement interdit de copier ou d’utiliser le tout ou une partie de «
+            geok’h » &agrave; des fins commerciales. Vous vous engagez a adopter un comportement correct et à respecter les
+            r&egrave;gles de bonne conduite ainsi que le r&eacute;glement de l’Universite (langage appropri&eacute; , respect du mat&eacute;riel et
+            des lieux, respect des personnes…).
+        </p>
+
+        <h2>Respect du mat&eacute;riel et des lieux.</h2>
+        <p>
+            Il est strictement interdit de d&eacute;placer des balises de leur lieu initial. De même qu’est strictement interdite
+            la d&eacute;gradation des balises et des lieux de l’activit&eacute;. Veillez &agrave; oeuvrer dans le respect de l’infrastructure du
+            Campus universitaire de Lille 1. Toute d&eacute;gradation sera passible de sanctions. Si toutefois vous trouviez une
+            balise hors de son lieu initial, pr&eacute;venez le HubHouse (num&eacute;ro disponible sur la surface de la balise).
+        </p>
+
+        <h2>Choix du nom d’&eacute;quipe.</h2>
+        <p>
+            Concernant le nom d’&eacute;quipe, vous acceptez de ne pas choisir de contenu abusif, obsc&egrave;ne, vulgaire,
+            diffamatoire, choquant, menaçant, a caract&egrave;re sexuel ou autre qui peut transgresser les lois en vigueur.
+        </p>
+
+        <button id="btn_connexion_cgu">Compris !</button>
+
+    </section>
+
+
+    <!-- -------------------------- -->
+    <!--   Lancement d'une partie   -->
+    <!-- -------------------------- -->
+    <section class="view" id="connexion">
+        <form method="post" action="" id="form_connexion">
+
+            <p class="sectionBar">EQUIPE</p>
+            <div class="inpt_text">
+                <input type="text" name="form_equipe" id="form_equipe" value="Entrez ici le nom de votre &eacute;quipe" required
+                       onblur="if (this.value == '') {this.value = 'Entrez ici le nom de votre &eacute;quipe';}"
+                       onfocus="if (this.value == 'Entrez ici le nom de votre &eacute;quipe') {this.value = '';}">
+            </div>
+
+            <p class="sectionBar">NIVEAU</p>
+            <div id="form_niveau" class="form_groupe">
+
+                <table class="reponses" style="width:100%">
+                    <tbody>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpniveau" value="valuable" id="lpmodedeb" type="radio" checked>
+                            <label for="lpmodedeb"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">DEBUTANT</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpniveau" value="valuable" id="lpmodeper" type="radio">
+                            <label for="lpmodeper"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">PERFECTIONNEMENT</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--<input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/>
+				    <label for="form_niveau1">DEBUTANT</label>
+                    <input type="radio" name="form_niveau" id="form_niveau2" value="2" />
+				    <label for="form_niveau2">PERFECTIONNEMENT</label>-->
+            </div>
+
+            <p class="sectionBar">PARCOURS</p>
+            <div id="form_parcours" class="form_groupe">
+
+                <table class="reponses" style="width:100%">
+                    <tbody>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp1" type="radio" checked>
+                            <label for="lpp1"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 1</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp2" type="radio">
+                            <label for="lpp2"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 2</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cb-col">
+                            <input name="lpparcours" value="valuable" id="lpp3" type="radio">
+                            <label for="lpp3"></label>
+                        </td>
+                        <td style="text-align:left;">
+                            <p class="questiontxt">NIVEAU 3</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--
+                <input type="radio" name="form_parcours" id="form_parcours1" value="1" checked="checked"/>
+                <label for="form_parcours1">1</label>
+
+                <input type="radio" name="form_parcours" id="form_parcours2" value="2"/>
+                <label for="form_parcours2">2</label>
+
+                <input type="radio" name="form_parcours" id="form_parcours3" value="3"/>
+                <label for="form_parcours3">3</label>
+                -->
+            </div>
+
+            <input type="submit" name="submit" value="Lancer la partie" class="form_submit"/>
+
+        </form>
+    </section>
+
+
+    <!-- -------------------------- -->
+    <!--   recherche d'une balise   -->
+    <!-- -------------------------- -->
+    <section class="view" id="compass">
+        <p class="sectionBar sectionBar_fullsize">BALISE <span></span></p>
+
+        <div style="position: relative">
+            <div class="score third">
+                <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+                <p>SCORE</p>
+                <p class="valeur"><span id="rb_score">0</span></p>
+            </div>
+
+            <div class="conseil third">
+                <p><img src="img/recherche_bulb.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>INDICE CACHE</p>
+                <p class="valeur valRecherche"><span id="conseilHide">null</span></p>
+            </div>
+
+            <div class="temps third">
+                <p><img src="img/recherche_timer.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>TEMPS</p><span id="timer" class="valRecherche">00:00:00</span></p>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 135px;">
+            <div style="position:relative; background: url(img/compas_bg.png) no-repeat 0% 0% / 100% auto; ">
+                <img src="img/compas_indic.png" alt="" id="compass_elt">
+            </div>
+        </div>
+
+
+        <div style="width: 100%;">
+            <div class="distance" style="width: 33%; float: left">
+                <p><img src="img/recherche_distance.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>DISTANCE</p>
+                <p class="valeur valRecherche"><span>...</span> m</p>
+            </div>
+            <div style="width: 34%; float: left"></div>
+            <div class="precision" style="width: 33%; float: right">
+                <p><img src="img/recherche_precision.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p>PRECISION</p>
+                <p class="valeur valRecherche"><span>...</span> m</p>
+            </div>
+        </div>
+        <p><br></p>
+        <div>
+            <button id="btn_pass" class="left btnpassive" style="width: 45%; float:left;"><p>Passer la balise</p></button>
+            <button id="btn_flash" class="right" style="width: 45%; float:right;"><p>Flasher le code</p></button>
+        </div>
+    </section>
+
+
+    <!-- -------------------------- -->
+    <!--   QR Code Reader           -->
+    <!-- -------------------------- -->
+    <section class="view" id="qr_code">
+        <div id="qr_code_result">
+            <p class="sectionBar sectionBar_fullsize correct">Bonne balise ! F&eacute;licitations !</p>
+            <p class="sectionBar sectionBar_fullsize errone noflash">Aucun code flashé</p>
+            <p class="sectionBar sectionBar_fullsize errone mauvaiseb">Mauvaise balise !</p>
+
+            <br><br>
+        </div>
+
+        <button id="btn_question">Voir la question</button>
+        <button id="btn_entrepreneurs">Voir la derni&egrave;re question</button>
+        <button id="btn_compass_retour">Revenir en arri&egrave;re</button>
+    </section>
+
+
+    <!-- -------------------------- -->
+    <!--   question d'une balise    -->
+    <!-- -------------------------- -->
+    <section class="view" id="question">
+        <p class="sectionBar sectionBar_fullsize">QUESTION</p>
+
+        <div style="position: relative">
+            <div class="score third">
+                <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+                <p>SCORE</p>
+                <p class="valeur"><span></span></p>
+            </div>
+
+            <div class="third">
+            </div>
+
+            <div class="difficulte third">
+                <p><img src="img/question_warning.png" class="img_small" style="width:50px;height:50px;"></p>
+                <p class="valeur">DIFFICULTE</p>
+                <p><span id="qstdifficulte" class="valRecherche"></span></p>
+            </div>
+        </div>
+
+        <div class="ref_qbeq" style="margin-top: 135px; text-align: left;">
+            <h2>QUESTION</h2>
+            <p class="valeur"><span></span></p>
+
+            <h2>COCHEZ LA OU LES BONNES REPONSES</h2>
+            <form method="post" action="" id="form_question">
+                <table class="reponses" style="width:100%">
+                </table>
+                <div class="pari">
+                    <select name="form_pari" id="form_pari">
+                        <!--<option value="" disabled selected>PARIER SUR VOTRE REPONSE</option>-->
+                        <option value="0">Je ne parie rien</option>
+                        <option value="50"> 50 PTS</option>
+                        <option value="100">100 PTS</option>
+                        <option value="150">150 PTS</option>
+                    </select>
+                    <input type="submit" name="submit" value="R&eacute;pondre" class="form_submit"/>
+                    <br><br>
+                    <button type="button" id="info_paris" class="btn_question btnpassive">Info sur les paris</button>
+
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+
+    <!-- ---------------------------------- -->
+    <!-- reponse à la question d'une balise -->
+    <!-- ---------------------------------- -->
+    <section class="view" id="reponse">
+        <div class="correction">
+            <p class="sectionBar sectionBar_fullsize correct">Bonne r&eacute;ponse.</p>
+
+            <p class="sectionBar sectionBar_fullsize partial">Bonne r&eacute;ponse mais incompl&egrave;te.</p>
+
+            <p class="sectionBar sectionBar_fullsize errone">Mauvaise r&eacute;ponse.</p>
+        </div>
+
+        <div class="score" style="position: relative; text-align: center;">
+            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+            <p class="gain"><span></span></p>
+            <p class="valeur"><span>0</span></p>
+        </div>
+
+        <div class="retour">
+            <h2 class="correct">COMPLEMENT D'INFORMATION :</h2>
+
+            <h2 class="errone">VOICI LA BONNE REPONSE :</h2>
+
+            <p class="valeur"></p>
+
+            <p class="indice" id="reponse_indice"></p>
+
+            <!--<button class="left" id="modal_reponse" disabled="disabled">voir l'indice</button> -->
+            <div style="text-align: center; margin-top:20px;">
+                <button id="btn_compass" class="btn_question">Continuer</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ---------------------------------- -->
+    <!--      listes des entrepreneurs      -->
+    <!-- ---------------------------------- -->
+    <section class="view" id="entrepreneurs">
+        <div class="entrepreneurs_wrapper">
+            <p id="lib_question"></p>
+
+            <div class="ents_miniatures">
+            </div>
+            <div id="ents_presentation">
+            </div>
+            <br>
+            <br>
+
+            <p class="indice" id="all_founded_indice"></p>
+
+            <button class="indices left btnpassive" id="modal_all_indice">voir les indices</button>
+            <br><br>
+            <button class="right" id="btn_entrepreneur_mystere">C'est cet entrepreneur</button>
+            <br>
+            <br>
+        </div>
+    </section>
+
+
+    <!-- ---------------------------------- -->
+    <!--      l'entrepreneur mystere        -->
+    <!--    Lorsque la réponse est -->
+    <!-- ---------------------------------- -->
+    <section class="view" id="entrepreneur_mystere">
+
+        <div class="correction sectionBar sectionBar_fullsize">
+            <p class="correct">BONNE REPONSE</p>
+            <p class="errone">MAUVAISE REPONSE</p>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="ents_miniature">
+            <div class="ent_min"></div>
+            <img src="" class="ent_presentation_img ent_min" style="width:30%; height:auto;">
+            <div class="ent_min"></div>
+        </div>
+
+        <h2 class="ent_presentation_nom"><span style="color:#909090">L'entrepreneur est </span><span class="embs"></span></h2>
+        <br>
+
+        <div class="score">
+            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
+            <h2 class="bonus"><span style="color:#909090">+ <span class="bonus">XXX</span> points pour la bonne reponse</span></h2>
+            <p class="valeur"><span>XXX</span></p>
+        </div>
+
+        <br>
+        <br>
+
+        <button id="btn_scores">Voir les scores</button>
+    </section>
+
+
+    <!-- ---------------------------------- -->
+    <!--            Scores finaux           -->
+    <!-- ---------------------------------- -->
+    <section class="view" id="scores">
+
+        <h2 class="sectionBar sectionBar_fullsize">les Scores</h2>
+
+        <div style="margin: auto; width: auto;">
+
+            <p class="niveau">
+                <span>Niveau </span>
+                <span class="valeur">x</span>
+            </p>
+
+            <p class="temps">
+                <span>Temps </span>
+                <span class="valeur" id="timer_final"></span>
+            </p>
+
+            <p class="balises">
+                <span>Balises </span>
+                <span class="valeur">XX</span> /
+                <span class="maximum">XX</span>
+            </p>
+
+            <p class="reponses">
+                <span>Bonnes r&eacute;ponses </span>
+                <span class="valeur">XX </span> /
+                <span class="maximum">XX</span>
+            </p>
+            <!--<p class="paris">
+                <span>Paris </span>
+                <span class="valeur">XXXXX</span>
+            </p>-->
+            <p class="points">
+                <span>Points </span>
+                <span class="valeur">XXXXXX</span>
+            </p>
+
+            <!--<button class="stats modal" disabled="disabled">mes statistiques</button>-->
+        </div>
+        <center><button id="btn_credits">Finir la partie</button></center>
+
+    </section>
+
+
+    <!-- ---------------------------------- -->
+    <!--                Credits             -->
+    <!-- ---------------------------------- -->
+    <section class="view" id="credits">
+        <h2 class="sectionBar sectionBar_fullsize">Cr&eacute;dits :</h2>
+
+        <div class="credits">
+            <img class="img_credits" src="img/ipm_logo.png" alt="IPM Logo">
+            <img class="img_credits" src="img/lille1_logo.png" alt="Lille1 Logo">
+        </div>
+        <h3>D&eacute;veloppeurs</h3>
+
+        <div class="dev">
+            Durieu Jean-Vital <br>
+            Antoine Durigneux <br>
+            Quentin Coët<br>
+            Pauline Goblot<br>
+            Raphael Bauduin<br>
+        </div>
+
+
+        <br><br>
+        <button id="btn_quitter">Quitter l'application</button>
+    </section>
+</section>
+
+<br>
+
+<footer>
+</footer>
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/jQueryRotate.min.js"></script>
+<script type="text/javascript" src="js/jquery.timer.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/data_balises.js"></script>
+<script type="text/javascript" src="js/data_entrepreneurs.js"></script>
+<script type="text/javascript" src="js/data_questions.js"></script>
+<script type="text/javascript" src="js/data_parcours.js"></script>
+<script type="text/javascript" src="js/geodesie.js"></script>
+<script type="text/javascript" src="js/compass.js"></script>
+
+<script type="text/javascript" src="js/eventHandler.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</html>
