@@ -22,9 +22,9 @@
             <button id="btn_connexion">Jouer</button>
         </div>
         <p class="accueil_uc">
-            GeoK'H est une application de geocaching proposée par le HubHouse.
+            GeoK'H est une application de geocaching propos&eacute;e par le HubHouse.
             <br><br>
-            En jouant une partie vous accepter les <a href="#" id="btn_cgu">conditions générales d'utilisation</a>
+            En jouant une partie vous accepter les <a href="#" id="btn_cgu">conditions g&eacute;n&eacute;rales d'utilisation</a>
         </p>
     </section>
 
@@ -35,33 +35,33 @@
 
         <center>
         <h2>Conditions d’utilisation</h2>
-        <p>En accédant à « geok’h », vous acceptez les conditions suivantes.</p>
+        <p>En acc&eacute;dant &agrave; « geok’h », vous acceptez les conditions suivantes.</p>
         </center>
 
-        <h2>Généralités.</h2>
+        <h2>G&eacute;n&eacute;ralit&eacute;s.</h2>
         <p>
-            Vous êtes légalement responsable du support utilisé et des dommages ou dégâts liés au support et qui
-            pourraient intervenir lors du « geok’h ». Il vous est demandé de prendre connaissance et de respecter les
-            règles du jeu.
-            L’application « geok’h » est gratuite mais ne saurait être utilisée pour une fonction autre que celle pour
-            laquelle elle a été conçue. Il est formellement interdit de copier ou d’utiliser le tout ou une partie de «
-            geok’h » à des fins commerciales. Vous vous engagez a adopter un comportement correct et à respecter les
-            règles de bonne conduite ainsi que le réglement de l’Universite (langage approprié , respect du matériel et
+            Vous êtes l&eacute;galement responsable du support utilis&eacute; et des dommages ou d&eacute;gâts li&eacute;s au support et qui
+            pourraient intervenir lors du « geok’h ». Il vous est demand&eacute; de prendre connaissance et de respecter les
+            r&egrave;gles du jeu.
+            L’application « geok’h » est gratuite mais ne saurait être utilis&eacute;e pour une fonction autre que celle pour
+            laquelle elle a &eacute;t&eacute; conçue. Il est formellement interdit de copier ou d’utiliser le tout ou une partie de «
+            geok’h » &agrave; des fins commerciales. Vous vous engagez a adopter un comportement correct et à respecter les
+            r&egrave;gles de bonne conduite ainsi que le r&eacute;glement de l’Universite (langage appropri&eacute; , respect du mat&eacute;riel et
             des lieux, respect des personnes…).
         </p>
 
-        <h2>Respect du matériel et des lieux.</h2>
+        <h2>Respect du mat&eacute;riel et des lieux.</h2>
         <p>
-            Il est strictement interdit de déplacer des balises de leur lieu initial. De même qu’est strictement interdite
-            la dégradation des balises et des lieux de l’activité. Veillez à oeuvrer dans le respect de l’infrastructure du
-            Campus universitaire de Lille 1. Toute dégradation sera passible de sanctions. Si toutefois vous trouviez une
-            balise hors de son lieu initial, prévenez le HubHouse (numéro disponible sur la surface de la balise).
+            Il est strictement interdit de d&eacute;placer des balises de leur lieu initial. De même qu’est strictement interdite
+            la d&eacute;gradation des balises et des lieux de l’activit&eacute;. Veillez &agrave; oeuvrer dans le respect de l’infrastructure du
+            Campus universitaire de Lille 1. Toute d&eacute;gradation sera passible de sanctions. Si toutefois vous trouviez une
+            balise hors de son lieu initial, pr&eacute;venez le HubHouse (num&eacute;ro disponible sur la surface de la balise).
         </p>
 
-        <h2>Choix du nom d’équipe.</h2>
+        <h2>Choix du nom d’&eacute;quipe.</h2>
         <p>
-            Concernant le nom d’équipe, vous acceptez de ne pas choisir de contenu abusif, obscène, vulgaire,
-            diffamatoire, choquant, menaçant, a caractère sexuel ou autre qui peut transgresser les lois en vigueur.
+            Concernant le nom d’&eacute;quipe, vous acceptez de ne pas choisir de contenu abusif, obsc&egrave;ne, vulgaire,
+            diffamatoire, choquant, menaçant, a caract&egrave;re sexuel ou autre qui peut transgresser les lois en vigueur.
         </p>
 
         <button id="btn_connexion_cgu">Compris !</button>
@@ -77,9 +77,9 @@
 
             <p class="sectionBar">EQUIPE</p>
             <div class="inpt_text">
-                <input type="text" name="form_equipe" id="form_equipe" value="Entrez ici le nom de votre équipe" required
-                       onblur="if (this.value == '') {this.value = 'Entrez ici le nom de votre équipe';}"
-                       onfocus="if (this.value == 'Entrez ici le nom de votre équipe') {this.value = '';}">
+                <input type="text" name="form_equipe" id="form_equipe" value="Entrez ici le nom de votre &eacute;quipe" required
+                       onblur="if (this.value == '') {this.value = 'Entrez ici le nom de votre &eacute;quipe';}"
+                       onfocus="if (this.value == 'Entrez ici le nom de votre &eacute;quipe') {this.value = '';}">
             </div>
 
             <p class="sectionBar">NIVEAU</p>
@@ -212,62 +212,37 @@
                 <p class="valeur valRecherche"><span>...</span> m</p>
             </div>
         </div>
+        <p><br></p>
         <div>
-            <button id="btn_pass" class="left" style="width: 45%; float:left;"><p>Passer la balise</p></button>
+            <button id="btn_pass" class="left btnpassive" style="width: 45%; float:left;"><p>Passer la balise</p></button>
             <button id="btn_flash" class="right" style="width: 45%; float:right;"><p>Flasher le code</p></button>
         </div>
     </section>
+
 
     <!-- -------------------------- -->
     <!--   QR Code Reader           -->
     <!-- -------------------------- -->
     <section class="view" id="qr_code">
         <div id="qr_code_result">
+            <p class="sectionBar sectionBar_fullsize correct">Bonne balise ! F&eacute;licitations !</p>
+            <p class="sectionBar sectionBar_fullsize errone noflash">Aucun code flashé</p>
+            <p class="sectionBar sectionBar_fullsize errone mauvaiseb">Mauvaise balise !</p>
+
+            <br><br>
         </div>
 
-        <button id="btn_question">Confirmer</button>
-        <button id="btn_entrepreneurs">J'ai fini !</button>
-        <button id="btn_compass_retour">Retour</button>
+        <button id="btn_question">Voir la question</button>
+        <button id="btn_entrepreneurs">Voir la derni&egrave;re question</button>
+        <button id="btn_compass_retour">Revenir en arri&egrave;re</button>
     </section>
-    <!--<section class="view" id="qr_code">
-    <p class="sectionBar sectionBar_fullsize">QUESTION</p>
 
-    <div style="position: relative">
-        <div class="score third">
-            <p><img src="img/recherche_stars.png" class="img_small" style="width:100px;height:50px;"></p>
-            <p>SCORE</p>
-            <p class="valeur"><span id="rb_score">0</span></p>
-        </div>
-
-        <div class="conseil third">
-        </div>
-
-        <div class="temps third">
-            <p><img src="img/recherche_timer.png" class="img_small" style="width:50px;height:50px;"></p>
-            <p>TEMPS</p><span id="difficulte" class="valRecherche">00:00:00</span></p>
-        </div>
-
-    </div>
-
-    <div style="margin-top: 135px;">
-        <h2><b>COCHEZ LA OU LES BONNES REPONSES</b></h2>
-
-        <input id="option" type="checkbox" name="field" value="option">
-        <label for="option">Value</label>
-    </div>
-
-    <div>
-        <button id="btn_pass" class="left" style="width: 45%; float:left;"><p>PARIER</p></button>
-        <button id="btn_flash" class="right" style="width: 45%; float:right;"><p>REPONDRE</p></button>
-    </div>
-</section>
--->
 
     <!-- -------------------------- -->
     <!--   question d'une balise    -->
     <!-- -------------------------- -->
     <section class="view" id="question">
-        <p class="sectionBar sectionBar_fullsize">QUESTION(S)</p>
+        <p class="sectionBar sectionBar_fullsize">QUESTION</p>
 
         <div style="position: relative">
             <div class="score third">
@@ -281,7 +256,8 @@
 
             <div class="difficulte third">
                 <p><img src="img/question_warning.png" class="img_small" style="width:50px;height:50px;"></p>
-                <p class="valeur">DIFFICULTE</p><span id="warning" class="valRecherche"></span></p>
+                <p class="valeur">DIFFICULTE</p>
+                <p><span id="qstdifficulte" class="valRecherche"></span></p>
             </div>
         </div>
 
@@ -295,85 +271,21 @@
                 </table>
                 <div class="pari">
                     <select name="form_pari" id="form_pari">
-                        <option value="" disabled selected>PARIER SUR VOTRE REPONSE</option>
-                        <!--<option value="0">0</option>-->
+                        <!--<option value="" disabled selected>PARIER SUR VOTRE REPONSE</option>-->
+                        <option value="0">Je ne parie rien</option>
                         <option value="50"> 50 PTS</option>
                         <option value="100">100 PTS</option>
                         <option value="150">150 PTS</option>
                     </select>
-                    <input type="submit" name="submit" value="Répondre" class="form_submit"/>
+                    <input type="submit" name="submit" value="R&eacute;pondre" class="form_submit"/>
+                    <br><br>
+                    <button type="button" id="info_paris" class="btn_question btnpassive">Info sur les paris</button>
+
                 </div>
             </form>
         </div>
 
     </section>
-    <!--<section class="view" id="question">
-        <div class="score">
-            <p>Score :</p>
-            <p class="valeur"><span></span></p>
-        </div>
-        <div class="difficulte">
-            <p>Difficulté :</p>
-
-            <p class="valeur"><span></span></p>
-        </div>
-        <div class="lib_question">
-            <p>Question :</p>
-
-            <p class="valeur"><span></span></p>
-        </div>
-        <form method="post" action="" id="form_question">
-            <div class="reponses">
-
-            </div>
-            <div class="pari">
-                <label for="form_pari">Parier</label>
-                <select name="form_pari" id="form_pari">
-                    <option value="0">0</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="150">150</option>
-                </select>
-                <span>points</span>
-                <input type="submit" name="submit" value="Répondre" class="form_submit"/>
-            </div>
-        </form>
-    </section>-->
-
-
-    <!-- -------------------------- -->
-    <!--   Question entrepreneur    -->
-    <!-- -------------------------- -->
-    <!--<section class="view" id="questionEnt">
-        <p class="sectionBar sectionBar_fullsize">QUESTION(S)</p>
-
-        <div style="position: relative">
-            <div class="score third">
-                <p><img src="img/ent1.png" class="img_small" style="width:100px;height:50px;"
-                        onclick="hide('qe2');show('qe1')"></p>
-            </div>
-
-            <div class="third">
-                <p><img src="img/ent2.png" class="img_small" style="width:100px;height:50px;"
-                        onclick="hide('qe1');show('qe2')"></p>
-            </div>
-
-            <div class="difficulte third">
-                <p><img src="img/ent3.png" class="img_small" style="width:50px;height:50px;"></p>
-            </div>
-        </div>
-
-        <div class="desc" style="margin-top: 135px; text-align: left;">
-
-            <p id="qe1">Cocou les loulous :)</p>
-            <p id="qe2">Cocou les loulous 2</p>
-            <!--
-            <h2>QUESTION</h2>
-            <p class="valeur"><span></span></p>
-            --
-        </div>
-
-    </section>-->
 
 
     <!-- ---------------------------------- -->
@@ -381,11 +293,11 @@
     <!-- ---------------------------------- -->
     <section class="view" id="reponse">
         <div class="correction">
-            <p class="sectionBar sectionBar_fullsize correct">Bonne réponse.</p>
+            <p class="sectionBar sectionBar_fullsize correct">Bonne r&eacute;ponse.</p>
 
-            <p class="sectionBar sectionBar_fullsize partial">Bonne réponse mais incomplète.</p>
+            <p class="sectionBar sectionBar_fullsize partial">Bonne r&eacute;ponse mais incompl&egrave;te.</p>
 
-            <p class="sectionBar sectionBar_fullsize errone">Mauvaise réponse.</p>
+            <p class="sectionBar sectionBar_fullsize errone">Mauvaise r&eacute;ponse.</p>
         </div>
 
         <div class="score" style="position: relative; text-align: center;">
@@ -428,7 +340,8 @@
 
             <p class="indice" id="all_founded_indice"></p>
 
-            <button class="indices left" id="modal_all_indice" disabled="disabled">voir les indices</button>
+            <button class="indices left btnpassive" id="modal_all_indice">voir les indices</button>
+            <br><br>
             <button class="right" id="btn_entrepreneur_mystere">C'est cet entrepreneur</button>
             <br>
             <br>
@@ -498,7 +411,7 @@
             </p>
 
             <p class="reponses">
-                <span>Bonnes réponses </span>
+                <span>Bonnes r&eacute;ponses </span>
                 <span class="valeur">XX </span> /
                 <span class="maximum">XX</span>
             </p>
@@ -512,8 +425,9 @@
             </p>
 
             <!--<button class="stats modal" disabled="disabled">mes statistiques</button>-->
-            <button id="btn_credits">Finir la partie</button>
         </div>
+        <center><button id="btn_credits">Finir la partie</button></center>
+
     </section>
 
 
@@ -521,13 +435,13 @@
     <!--                Credits             -->
     <!-- ---------------------------------- -->
     <section class="view" id="credits">
-        <h2>Crédits :</h2>
+        <h2 class="sectionBar sectionBar_fullsize">Cr&eacute;dits :</h2>
 
         <div class="credits">
-            <img class="img_credits" src="img/ipm_logo.jpg" alt="IPM Logo">
-            <img class="img_credits" src="img/lille1_logo.jpg" alt="Lille1 Logo">
+            <img class="img_credits" src="img/ipm_logo.png" alt="IPM Logo">
+            <img class="img_credits" src="img/lille1_logo.png" alt="Lille1 Logo">
         </div>
-        <h3>Développeurs</h3>
+        <h3>D&eacute;veloppeurs</h3>
 
         <div class="dev">
             Durieu Jean-Vital <br>
@@ -535,7 +449,6 @@
             Quentin Coët<br>
             Pauline Goblot<br>
             Raphael Bauduin<br>
-
         </div>
 
 
@@ -543,6 +456,8 @@
         <button id="btn_quitter">Quitter l'application</button>
     </section>
 </section>
+
+<br>
 
 <footer>
 </footer>

@@ -1,6 +1,6 @@
 /**
  *
- * Auteurs : Goblot Pauline et Bauduin Raphael
+ * Auteurs : DURIEU JEAN-VITAL, Goblot Pauline et Bauduin Raphael
  *
  */
 var app = {
@@ -31,13 +31,13 @@ var app = {
     question_courante: "",
     //
     entrepreneur_select: "",
-    entrepreneur_aTrouver: "entrepreneur_",
+    entrepreneur_aTrouver: "",
     nb_balises_trouvees: 0,
     nb_reponses_trouvees: 0,
     isTimerloaded: false,
     bonnesReponsesUser: [],
     currentTime: 0,
-    debugOnBrowser: false,
+    debugOnBrowser: true,
     nb_points_correct: 500,
     actualView: "",
     distanceMinToShowIndice: 50,
@@ -65,16 +65,17 @@ var app = {
         this.entrepreneurs = entrepreneurs.entrepreneurs;
 
         //permet de définir un entrepeneur a trouver de maniere aleatoire parmis tous disponibles
-        var nombreEntrepreneurs = Object.keys(this.entrepreneurs).length;
-        this.entrepreneur_aTrouver += randomIntFromInterval(1, nombreEntrepreneurs);
-
+        if (this.entrepreneur_aTrouver == "") {
+            var nombreEntrepreneurs = Object.keys(this.entrepreneurs).length;
+            this.entrepreneur_aTrouver = "entrepreneur_"+randomIntFromInterval(1, nombreEntrepreneurs);
+        }
 
         //cacher tous les indices
         $(".indice").hide();
 
         //affichage de la première vue
 
-        this.parcoursOrdre = [1, 10, 11];
+        //this.parcoursOrdre = [1, 10, 11];
         //this.parcoursOrdre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
         this.showView("#accueil");
@@ -160,8 +161,8 @@ var app = {
     // APRES FORMULAIRE CONNEXION
     showConnexionView: function showConnexionView() {
         $('header').show();
-        // TODO décommenter la gestion des parcours d'ordre
-        /*this.parcoursOrdre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        ////  TO DO décommenter la gestion des parcours d'ordre
+        this.parcoursOrdre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
         $("input[name=form_parcours]").change(function (event) {
             app.parcours = $('input[name=form_parcours]:checked').val();
@@ -172,7 +173,7 @@ var app = {
             } else {
                 app.parcoursOrdre = [2, 7, 5, 6, 4, 3, 8, 9, 10, 1, 11];
             }
-        });*/
+        });
     },
 
 
@@ -185,7 +186,7 @@ var app = {
         $('#compass .conseil .valeur span').text(this.balises["balise_" + this.parcoursOrdre[this.balise_courante]].indice);
 
         // affiche le num BALISE COURANTE dans la headerBar
-        $('#compass .sectionBar span').html((this.balise_courante + 1) + " / " + (this.nbbalises));
+        $('#compass .sectionBar span').html((this.balise_courante + 1) + " / " + (Object.keys(this.parcours).length));
 
         // affichage du SCORE actuel
         $('#compass .score .valeur span').text(this.score);
@@ -201,16 +202,13 @@ var app = {
         // On initialise le timer
         this.isTimerloaded = true;
         if (app.debugOnBrowser == false) {
-
             if (compassLocActi) { compass.stopLocation(); }
             if (compassOriActi) { compass.stopOrientation(); }
 
             //lancement de la recherche de position et de l'orientation
             if (!compassLocActi) { compass.activateLocation(); }
             if (!compassOriActi) { compass.activateOrientation(); }
-
         }
-
         startTimer();
     },
     // VALIDATION QR CODE
@@ -223,7 +221,7 @@ var app = {
         $('#btn_question').hide();
         $("#btn_entrepreneurs").hide();
         $('#btn_compass_retour').show();
-        $("#qr_code_result").html("Flash du QR Code");
+        //$("#qr_code_result").html("Flash du QR Code");
         var parcoursText = this.parcours > 9 ? "" : "0";
         var baliseText = this.parcoursOrdre[this.balise_courante] > 9 ? "" : "0";
         var textATrouver = "balise_" + baliseText + this.parcoursOrdre[this.balise_courante] + "_parcours_" + parcoursText + 1;
@@ -232,18 +230,34 @@ var app = {
 
             cordova.plugins.barcodeScanner.scan(
                 function (result) {
+
+                    // Si mauvaise balise
                     if (result.text == "") {
-                        $("#qr_code_result").html("Aucun code flashé");
+                        $("#qr_code_result .correct").hide();
+                        $("#qr_code_result .noflash").show();
+                        $("#qr_code_result .mauvaiseb").hide();
+
+                    // Si bonne balise
                     } else if (result.text == textATrouver) {
-                        $("#qr_code_result").html("Bonne balise ! Félicitations !");
-                        $('#btn_question').show();
+                        $("#qr_code_result .correct").show();
+                        $("#qr_code_result .noflash").hide();
+                        $("#qr_code_result .mauvaiseb").hide();
+
                         $('#btn_compass_retour').hide();
+
+                        // check si dernière question ou pas
                         if (app.balise_courante == (Object.keys(app.balises).length) - 1) {
                             $("#btn_entrepreneurs").show();
                             $('#btn_question').hide();
+                        } else {
+                            $('#btn_question').show();
                         }
+
+                    // Si mauvaise balise
                     } else {
-                        $("#qr_code_result").html("Mauvaise balise ! : " + textATrouver + " - " + result.text);
+                        $("#qr_code_result .correct").hide();
+                        $("#qr_code_result .noflash").hide();
+                        $("#qr_code_result .mauvaiseb").show();
                     }
                 },
                 function (error) {
@@ -268,62 +282,9 @@ var app = {
         /*
          * Si on est à la dernière balise, l'affichage de la question est différent
          */
-        var maxquestions = (Object.keys(this.balises).length) - 1;
+        var maxquestions = (Object.keys(this.parcoursOrdre).length) - 1; //(Object.keys(this.balises).length) - 1;
         if (this.balise_courante >= maxquestions) {
-
-            app.showView("#questionEnt");
-
-            /*
-            // récupération des informations sur la question à afficher
-            this.question_courante = this.balises["balise_" + this.parcoursOrdre[this.balise_courante]].question;
-
-            // affichage de la question
-            $('#entrepreneurs .lib_question').text(this.questions[this.question_courante].question);
-
-            // recupération des informations des entrepreneurs
-            var entrepreneurs_liste = [];
-            for (var i = 0; i < this.questions[this.question_courante].propositions.length; i++) {
-                entrepreneurs_liste.push(this.entrepreneurs[this.questions[this.question_courante].propositions[i]]);
-            }
-
-            app.questions;
-            app.balise_courante;
-
-            var html_miniatures = "";
-            var html_entrepreneur = "";
-
-            for (var i = 0; i < entrepreneurs_liste.length; i++) {
-                html_miniatures += '<a href="#" onclick="app.showEnt(\'' + this.questions[this.question_courante].propositions[i] + '\'); return false;">'
-                + '<img src="img/user.svg" alt="' + entrepreneurs_liste[i].prenom + ' ' + entrepreneurs_liste[i].nom + '" class="ent_min" />'
-                + '</a>';
-                html_entrepreneur += '<div id="' + this.questions[this.question_courante].propositions[i] + '" style="display: none;">'
-                + '<p class="ent_nom">' + entrepreneurs_liste[i].prenom + ' ' + entrepreneurs_liste[i].nom + '</p>'
-                + '<div class="ent_desc">';
-                for (var j = 0; j < entrepreneurs_liste[i].interview.length; j++) {
-                    html_entrepreneur += '<p class="ent_question">' + entrepreneurs_liste[i].interview[j].question + '</p>';
-                    for (var k = 0; k < entrepreneurs_liste[i].interview[j].reponses.length; k++) {
-                        html_entrepreneur += '<p class="ent_reponse">' + entrepreneurs_liste[i].interview[j].reponses[k] + '</p>';
-                    }
-                }
-                html_entrepreneur += '</div></div>';
-            }
-            ;
-            $('#entrepreneurs .ents_miniatures').html(html_miniatures);
-            $('#entrepreneurs #ents_presentation').html(html_entrepreneur);
-
-            $('#modal_all_indice').prop('disabled', false);
-            var indices = "";
-
-            for (var i = 0; i < this.bonnesReponsesUser.length; i++) {
-                var indiceBonneRep = this.bonnesReponsesUser[i];
-                indices += (i + 1) + " -> " + indiceBonneRep + "\n";
-            }
-            $('#all_founded_indice').text(indices);
-
-
-            // on montre la premiere page pour commencer, hardcode ok
-            this.showEnt("entrepreneur_1");
-            */
+            app.showView("#entrepreneurs");
         }
         else
         {
@@ -334,8 +295,9 @@ var app = {
             this.question_courante = this.balises["balise_" + this.parcoursOrdre[this.balise_courante]].question;
 
             // affichage de la difficutlé
-            //$('#question .difficulte .valeur span').text(this.questions[this.question_courante].difficulte);
-            $('#question .difficulte .valeur span').text("5");
+            //$('#question .difficulte .valeur .valRecherche').text(this.questions[this.question_courante].difficulte);
+            $('#qstdifficulte').text(this.questions[this.question_courante].difficulte);
+            //$('#question .difficulte .valeur span').text("5");
 
             // affichage de la question
             $('#question .ref_qbeq .valeur span').text(this.questions[this.question_courante].question);
@@ -408,14 +370,15 @@ var app = {
                 //multiplié par le niveau de la question
                 $("#reponse .correct").show();
                 $("#reponse .partial").hide();
-                scoreToAdd = $('#form_pari').val() * this.questions[this.question_courante].difficulte;
+                scoreToAdd = $('#form_pari').val() * this.questions[this.question_courante].difficulte + 50;
             } else {
                 //on ajoute les points que l'utilisateur a parié
                 //multiplié par le niveau de la question
                 //multiplié par un ratio de bonne réponses
                 $("#reponse .partial").show();
-                $("#reponse .correct").show();
-                scoreToAdd = $('#form_pari').val() * this.questions[this.question_courante].difficulte * (nbOfCorrectAnswers / nb_reponses);
+                $("#reponse .correct").hide();
+                $("#reponse .errone").hide();
+                scoreToAdd = $('#form_pari').val() * this.questions[this.question_courante].difficulte * (nbOfCorrectAnswers / nb_reponses) - 50;
             }
 
             scoreToAdd = Math.round(scoreToAdd);
@@ -432,8 +395,13 @@ var app = {
 
             //la bonne reponse de l'utilisateur, utilisé pour garder les questions pour lesquelles ont peut afficher tous les indices a la fin !
 
-
-            var indice = this.entrepreneurs[this.entrepreneur_aTrouver].indices["indice_" + this.parcoursOrdre[this.balise_courante]];
+            var indtmp = ("indice_"+this.parcoursOrdre[this.balise_courante]);
+            var enttmp = this.entrepreneurs[this.entrepreneur_aTrouver];
+            //console.log(indtmp);
+            //console.log(this.entrepreneurs);
+            //console.log(this.entrepreneur_aTrouver);
+            //console.log(enttmp);
+            var indice = enttmp.indices[indtmp];
             $('#reponse_indice').text(indice);
             this.bonnesReponsesUser.push(indice);
             //notif indice bonne réponse
@@ -442,7 +410,7 @@ var app = {
                     $("#reponse_indice").text(),  // message
                     null,                  // callback to invoke
                     'Indice',            // title
-                    ['Merci !']            // buttonLabels
+                    ['C\'est not\u00E9']            // buttonLabels
                 );
             }
 
@@ -514,12 +482,12 @@ var app = {
                 + '<a href="#" onclick="app.showEnt(\'' + this.questions[this.question_courante].propositions[i] + '\'); return false;">'
                 + '<img src="img/ent'+(i+1)+'.png" alt="' + entrepreneurs_liste[i].prenom + ' ' + entrepreneurs_liste[i].nom + '" class="ent_min" />'
                 + '</a>';
-            html_entrepreneur += '<br>'
+            html_entrepreneur += ''
                 + '<div id="' + this.questions[this.question_courante].propositions[i] + '" style="display: none;">'
                 + '<H2 class="ent_nom">' + entrepreneurs_liste[i].prenom + ' ' + entrepreneurs_liste[i].nom + '</h2>'
                 + '<div class="ent_desc">';
             for (var j = 0; j < entrepreneurs_liste[i].interview.length; j++) {
-                html_entrepreneur += '<h2 class="ent_question">' + entrepreneurs_liste[i].interview[j].question + '</h2>';
+                html_entrepreneur += '<h2 class="ent_question"><br>' + entrepreneurs_liste[i].interview[j].question + '</h2>';
                 for (var k = 0; k < entrepreneurs_liste[i].interview[j].reponses.length; k++) {
                     html_entrepreneur += '<p class="ent_reponse">' + entrepreneurs_liste[i].interview[j].reponses[k] + '</p>';
                 }
@@ -530,6 +498,7 @@ var app = {
         $('#entrepreneurs .ents_miniatures').html(html_miniatures);
         $('#entrepreneurs #ents_presentation').html(html_entrepreneur);
 
+        // On génère les indices
         $('#modal_all_indice').prop('disabled', false);
         var indices = "";
 
@@ -574,10 +543,10 @@ var app = {
     showScoreView: function showScoreView() {
         $("#scores .niveau .valeur").html(this.niveau);
         $("#scores .balises .valeur").html(this.nb_balises_trouvees);
-        $("#scores .balises .maximum").html(Object.keys(this.balises).length - 1);
+        $("#scores .balises .maximum").html(Object.keys(this.parcoursOrdre).length - 1);
 
         $("#scores .reponses .valeur").html(this.nb_reponses_trouvees);
-        $("#scores .reponses .maximum").html(Object.keys(this.balises).length - 1);
+        $("#scores .reponses .maximum").html(Object.keys(this.parcoursOrdre).length - 1);
 
         $("#scores .paris .valeur").html();
 

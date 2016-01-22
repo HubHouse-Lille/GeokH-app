@@ -1,6 +1,6 @@
 /**
  * Style de l'application GeoK'H
- * Auteurs : Goblot Pauline et Bauduin Raphael
+ * Auteurs : DURIEU JEAN-VITAL, Goblot Pauline et Bauduin Raphael
  * 
  * Organisation : 
  * 1. General
@@ -19,7 +19,7 @@
 }
 
 html {
-    background: url(../img/accueil_bg.jpg) no-repeat 0 100% fixed;
+    background: url(../img/accueil_bg.png) no-repeat 0 100% fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -119,6 +119,10 @@ input[type='submit']:active {
 }
 
 button:disabled {
+    background: #909090;
+}
+
+.btnpassive {
     background: #909090;
 }
 
@@ -593,7 +597,7 @@ input[type=radio]:checked + label
 }
 
 #scores p:first-child {
-    text-align: center;
+    /*text-align: center;*/
     font-weight: bold;
 }
 

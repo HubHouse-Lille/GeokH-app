@@ -87,7 +87,6 @@ var entrepreneurs = {
                 "indice_10": "Le plus important est d'être accompagné",
             }
         },
-
         "entrepreneur_2": {
             "nom": "Ardin",
             "prenom": "Cindy",
@@ -167,7 +166,6 @@ var entrepreneurs = {
                 "indice_10": "Etre accompagné pour prendre des risques mesurés"
             }
         },
-
         "entrepreneur_3": {
             "nom": "Mathie",
             "prenom": "Maud",

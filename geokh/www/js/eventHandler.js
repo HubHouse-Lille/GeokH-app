@@ -50,6 +50,22 @@ window.onload = function () {
         event.preventDefault();
     });
 
+    // Avoir des infos sur les paris
+    $('#info_paris').click(function () {
+        navigator.notification.confirm(
+            'Pour chaque question vous pouvez parier des points.' +
+            '\n\nUne bonne r\u00E9ponse vous rapporte 50 points plus, la somme pari\u00E9e fois le niveau de difficult\u00E9 de la question.' +
+            '\n\nUne mauvaise r\u00E9ponse vous fait perdre la somme pari\u00E9e fois le niveau de difficult\u00E9 de la question.' +
+            '\n\nEnfin, une r\u00E9ponse partiellement juste vous rapporte le ratio de bonne r\u00E9ponse par rapport \u00E0 votre pari fois le niveau de difficult\u00E9 de la question, moins 50 points.' +
+            '\n\nLa derni\u00E8re question, question sur l\'entrepreneur myst\u00E8re, vous rapporte 500 points ou 0 si vous la ratez.' +
+            'Les questions r\u00E9ussies vous donnent des indices pour r\u00E9pondre \u00E0 cette derni\u00E8re question.' +
+            '\n\nBonne chance !',  // message
+            null,                  // callback to invoke
+            'Info',            // title
+            ['J\'ai compris']            // buttonLabels
+        );
+    });
+
     // reponse à la question d'une balise - Bouton "CONTINUER"
     $('#btn_compass').click(function () {
         app.showView("#compass");
@@ -90,7 +106,6 @@ function hide(target){
     document.getElementById(target).style.display = 'none';
     //document.getElementById("clickMeId").style.display = 'block';
 }
-
 
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -154,7 +169,7 @@ function onDeviceReady() {
     // Recherche Balise > bouton passer la balise
     $('#btn_pass').click(function () {
         navigator.notification.confirm(
-            "Etes-vous certain de vouloir passer cette balise ? \n Si vous passez cette balise vous perdrez 150 points !",  // message
+            "Êtes-vous certain de vouloir passer cette balise ? \n Si vous passez cette balise vous perdrez 150 points !",  // message
             onConfirmPassBtn,                  // callback to invoke
             'Passer la balise',            // title
             ['Oui', 'Non']            // buttonLabels
@@ -179,7 +194,6 @@ function onDeviceReady() {
 
 
 }
-
 
 // Recherche balise > passer balise > confirmation
 function onConfirmPassBtn(button) {
