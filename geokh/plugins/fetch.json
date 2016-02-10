@@ -1,55 +1,55 @@
 {
-  "se.sanitarium.cordova.exitapp": {
-    "source": {
-      "type": "registry",
-      "id": "se.sanitarium.cordova.exitapp"
+    "se.sanitarium.cordova.exitapp": {
+        "source": {
+            "type": "registry",
+            "id": "se.sanitarium.cordova.exitapp"
+        }
+    },
+    "com.cmpsoft.mobile.plugin.exitapp": {
+        "source": {
+            "type": "registry",
+            "id": "com.cmpsoft.mobile.plugin.exitapp"
+        }
+    },
+    "org.apache.cordova.device-orientation": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device-orientation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "nl.x-services.plugins.insomnia": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-barcodescanner"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
-  },
-  "com.cmpsoft.mobile.plugin.exitapp": {
-    "source": {
-      "type": "registry",
-      "id": "com.cmpsoft.mobile.plugin.exitapp"
-    }
-  },
-  "org.apache.cordova.device-orientation": {
-    "source": {
-      "type": "registry",
-      "id": "org.apache.cordova.device-orientation"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "org.apache.cordova.dialogs": {
-    "source": {
-      "type": "registry",
-      "id": "org.apache.cordova.dialogs"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "org.apache.cordova.geolocation": {
-    "source": {
-      "type": "registry",
-      "id": "org.apache.cordova.geolocation"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "com.phonegap.plugins.barcodescanner": {
-    "source": {
-      "type": "registry",
-      "id": "com.phonegap.plugins.barcodescanner"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "nl.x-services.plugins.insomnia": {
-    "source": {
-      "type": "git",
-      "url": "https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git",
-      "subdir": "."
-    },
-    "is_top_level": true,
-    "variables": {}
-  }
 }
