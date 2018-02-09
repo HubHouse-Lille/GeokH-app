@@ -1,0 +1,13 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+.DS_STORE
+platforms
+node_modules
+plugins
+package-lock.json
+package.json
+keystore.jks

@@ -1,6 +1,0 @@
-{
-    "logo" : "/home/arnaud/pji/views/img/accueil/accueil_logo.png",
-    "footer" : "/home/arnaud/pji/views/img/accueil/accueil_footer.png",
-    "background" : "/home/arnaud/pji/views/img/accueil/accueil_photo_dark.png",
-    "bar" : {"leftColor" : "#EA6721", "rightColor" : "#E2027E"}
-}

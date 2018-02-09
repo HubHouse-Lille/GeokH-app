@@ -1,0 +1,102 @@
+#compass, #entrepreneur_mystere, #scores {
+    background: url("../img/partie/background-transparent.png") no-repeat top right;
+    background-size: 70%;
+}
+
+.compass_logo {
+    width: 50%;
+    padding-top: 5px;
+}
+
+.entete {
+    margin-top: 6px;
+}
+
+.entete .score {
+    width: 21%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.entete .score .valeur {
+    color: #f0a424;
+    font-weight: bold;
+}
+
+.entete .logo {
+    width: 54%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 6px;
+}
+
+.entete .temps {
+    width: 21%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.indice_icone {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.indice_texte {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.boussole {
+    width: 100%;
+    height: 495px;
+    margin: 20px auto auto;
+    background: url("../img/partie/boussole-contour.png") no-repeat center;
+}
+
+.informations_balise {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+.informations_balise .distance {
+    position: absolute;
+    left: 45px;
+    top: -45px;
+}
+
+.informations_balise .precision {
+    position: absolute;
+    right: 45px;
+    top: -45px;
+}
+
+#compass .conseil {
+    clear: both;
+    text-align: center;
+}
+
+#compass .score p,
+#compass .temps p,
+#compass .conseil p,
+#compass .distance p,
+#compass .precision p {
+    margin: 0 0 7px;
+}
+
+#compass .score p.valeur,
+#compass .temps p.valeur,
+#compass .distance p.valeur,
+#compass .precision p.valeur {
+    margin: 5px 0 10px;
+}
+
+#compass .conseil p.valeur {
+    margin: 5px 0;
+}
+
+#compass_elt {
+    clear: both;
+    margin-top: 120px;
+}

@@ -1,6 +1,0 @@
-{
-    "logo" : "img/fake_logo.png",
-    "footer" : "img/fake_footer.png",
-    "background" : "img/fake_background.png",
-    "bar" : {"leftColor" : "black", "rightColor" : "white"}
-}

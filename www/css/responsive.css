@@ -1,0 +1,104 @@
+@media (max-width: 480px) {
+
+    /* Accueil */
+    .button {
+        height: 4rem;
+        margin-top: 1rem;
+    }
+
+    .main{
+        margin: 24% auto auto;
+    }
+
+    /* Partie */
+    .entete .logo {
+        width: 54%;
+    }
+
+    .indice_icone{
+        float: left;
+    }
+
+    .image_indice_icone{
+        width: 2rem;
+        height: 2rem;
+        margin-left: 4rem;
+    }
+
+    .boussole {
+        margin: 0;
+        background: url(../img/partie/boussole-contour.png);
+        min-height: 18rem;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        position: relative;
+        height: auto;
+    }
+
+    #compass_elt {
+        margin-top: 0rem;
+        position: absolute;
+        width: 17%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .informations_balise .distance {
+        left: 1rem;
+        top: -3rem;
+    }
+
+    .informations_balise .precision {
+        right: 1rem;
+        top: -3rem;
+    }
+
+    #btn_flash, #btn_pass {
+        font-size: 1em;
+        height: 52px;
+    }
+
+    /* Question */
+    input[type=range] {
+        width: 80%;
+    }
+
+    #modal_all_indice, #btn_entrepreneur_mystere {
+        font-size: 1em;
+        height: 52px;
+    }
+
+    /* entrepreneurs */
+
+    .ent_presentation .ent_img {
+        width: 34%;
+        border-radius: 50rem;
+        border: solid 0.5rem #E7E7E7;
+        margin-top: 1rem;
+    }
+
+    #btn_scores {
+        font-size: 1em;
+        height: 52px;
+    }
+
+    /* banière */
+
+    .banniere_balise {
+        font-size: 1.2em;
+    }
+
+    .banniere_jaune {
+        font-size: 1.5em;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
+}

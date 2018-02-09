@@ -1,0 +1,70 @@
+/* liste des entrepreneurs */
+
+#entrepreneurs .ent_min {
+    margin: 7px 14px;
+    width: 25%;
+}
+
+#entrepreneurs .ents_miniatures a {
+    display: inline-block;
+}
+
+#entrepreneurs .ent_question {
+    font-weight: bold;
+}
+
+#entrepreneurs #ents_presentation {
+    text-align: left;
+}
+
+#entrepreneurs .ent_nom {
+    text-align: center;
+    font-size: 1.3em;
+    margin: 0;
+}
+
+/* affichage réponse entrepreneur mystère */
+
+.ent_reponse{
+    padding: 0 20px 10px 20px;
+    font-size: 1.2em;
+    text-align: justify;
+}
+
+.entrepreneur_bouton_conteneur{
+    margin-bottom:1.5rem;
+}
+
+#entrepreneur_mystere{
+    overflow-y: scroll;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.couleur_entrepreneur{
+    color:#E81D1D;
+}
+
+.ent_presentation .ent_img{
+    width: 14rem;
+    border-radius: 50rem;
+    border: solid 1rem #E7E7E7;
+    margin-top: 2rem;
+}
+
+/* réponse entrepreneur mystère */
+
+#reponse .logo {
+    margin-bottom: 20px;
+}
+
+.retour .valeur {
+    padding: 0 50px;
+    font-size: 1.1em;
+    font-family: sans-serif;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}

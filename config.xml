@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hubhouse.geokh" version="1.0.1" xmlns="http://www.w3.org/ns/widgets">
+    <name>GeokH</name>
+    <author email="olivier.lanselle@univ-lille1.fr" href="http://hubhouse.univ-lille1.fr/Accueil/">
+        Equipe HubHouse.
+    </author>
+    <description>
+        GeoK'H est une application de geocatching proposée par le Hubhouse.
+    </description>
+    <content src="index.html" />
+    <icon density="ldpi" platform="android" src="www/img/logo.png" />
+    <icon density="mdpi" platform="android" src="www/img/logo.png" />
+    <icon density="hdpi" platform="android" src="www/img/logo.png" />
+    <icon density="xhdpi" platform="android" src="www/img/logo.png" />
+    <preference name="orientation" value="portrait" />
+    <access origin="*" />
+    <plugin name="cordova-plugin-compat" spec="^1.2.0" />
+    <plugin name="cordova-plugin-device-orientation" spec="^1.0.7" />
+    <plugin name="cordova-plugin-dialogs" spec="^1.3.4" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
+    <plugin name="cordova-plugin-insomnia" spec="^4.3.0" />
+    <plugin name="cordova-plugin-network-information" spec="^1.3.4" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.8" />
+    <plugin name="cordova-plugin-device" spec="^2.0.1" />
+    <engine name="android" spec="^6.4.0" />
+</widget>
