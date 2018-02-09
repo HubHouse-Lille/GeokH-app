@@ -1,9 +1,0 @@
-<html>
-  <head>
-        <title>buttons</title>
-	<link type="text/css" rel="stylesheet" href="css/buttons.css">
-  </head>
-  <body>
-    <button class="button" style="background:{{button.bgcolor}}; color:{{button.color}}"> {{button.text}} </button>
-  </body>
-</html>

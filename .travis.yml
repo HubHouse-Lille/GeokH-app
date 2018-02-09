@@ -1,0 +1,50 @@
+language: android
+sudo: false
+jdk:
+- oraclejdk8
+env:
+  global:
+  - ANDROID_TOOLS=${ANDROID_HOME}/tools
+  - secure: "NXfzmk2rZf8252u2vm7xg+UOJl0wxyKjUvrR586vBBkhTMBYjiAwDvYhG+R1DyBLWKxc1/q72JLtuDFREbOQQ3IUt5mT03TcowlHZkzKbrffqdn1XyqI0dsBUjY3KhRYmYAHFlyJw20ZU2u+10HMju71JnxlZrk24OXvm6abGs7VxPiJ50fI7O9wzKzj4mAzDw/QWUWG2XJs6aDncE/j1CMTplsvyjd3jxp3BIUuLaGBMcq2miSqNEKViYU6J4AekjZx+HQfvMUDrnsUNHezjCc596f2Mg/tUvZ7Maqzcd1XSimWcRPLYDyGVZudKFNFo4tcynW7Kp5tJ8r6WT3LhNhKUP4/LHnPbicJYtKRgj2ZH1e7u5hckzAgmYx/obUmcu+AmLoYeCA5m8aI30djzyJ1SBF6rcEjz3GmfwwzcgcyNfaI6BFjhMA9NHEIKJhi8wu+XP1wTEU43z6/iBEUn8vG94OV5/ObGA6KHRwmSzzO3AU/hT/GUGWBIg7BtFuWJ0NsIrl5GpNn274ur5qOhLG68MAGc97ApDCBk+CGr2/aCLPbTa7HcRl+zEVQvXWTSo4pMcBMpxmrgbpkRWGkA4vpJtxGqTDf/Byw0t6HfV+wKWl6p5kHsahFiF5Yi9OjGezvBnVjenSImHcZx2Ie9ayLZ5QusAE7iBHdBmQoOiQ="
+  - secure: "3wDlTtCToTlI3cIBoygxdlrLchTNULljv0ngUPr7PGGtRjB67k71JKGapATaNOY5kf6ai1pfqUcWgRDozq4LL+0J/RbflNlg/i3Q1wRcDX2pZbO0Q/dAee9H/44zKv0xPB1dvsENiWbcS4whELzlP3yZzEWYJEwfjFxua6rORCFJ44zanpux7Z5r5tSLcUoTEA7Q1DlEuH+4P5Ljk/LMMx+IBuCeD72DHKFvDs8y0lyJOFURB/pJnQFlPl/7oqtg4DhCq3N2//zvhgkhV5G6n0KDdXuY+/9aaDyAsm+G6P98PIzmONNG/U+nOqVBpS+n4XzcIgemAcllveBksHF57pBRWUVEC2YaoJI6A2HR71uOFSljmRTpPtt2h8Lw9IT3i/s7Yni4DSgVQU6f9EPlhQgtZwlm33X3YLJE7WTVBH/lJoV/T5SsAQovsr/TZdMR64a3CWg1mnhaBtg+jAtj5zQkRE+wVK2kbocKmrjnRLBHFboVf4yc9HbyJUMtg//fmfIJmkeAZELI3cZi/L+Y2Xz9vnqK8+QsdWprQqL/4T3lgRnD9OWfO2fOD0X0qP7TOqr9z5qSOhyISfIWubUwCgvQlr6BPmAVbe159LMfFxJ2cJEsiBYJ8poT+1mhENIRgf8yIyB8p08+8AbKfCQaW2WPfb6b0eT0HcuEQ0AitWo="
+notifications:
+  email: false
+before_install:
+- nvm install 7
+- wget http://services.gradle.org/distributions/gradle-4.2.1-bin.zip
+- unzip gradle-4.2.1-bin.zip
+- export GRADLE_HOME=$PWD/gradle-4.2.1
+- export PATH=${GRADLE_HOME}/bin:${ANDROID_HOME}:${ANDROID_HOME}/emulator:${ANDROID_TOOLS}:${ANDROID_TOOLS}/bin:${ANDROID_HOME}/platform-tools:$PATH
+- node --version
+- gradle --version
+- echo y | android update sdk -u --filter android-25
+android:
+  components:
+  - tools
+  - android-26
+install:
+- npm cache clean
+- npm install
+- npm install -g cordova
+before_script:
+- cordova platform rm android
+- cordova platform add android@6.3.0
+script:
+- cordova prepare
+- cordova build android --release
+release:
+- exit 0
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_7c5537c9925c_key -iv $encrypted_7c5537c9925c_iv -in keystore.jks.enc -out keystore.jks -d
+- cd /home/travis/build/HubHouse-Lille/GeokH-app/platforms/android/build/outputs/apk
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/keystore.jks
+    -storepass $KEY_PASS -keypass $KEY_PASS android-release-unsigned.apk geokh
+- jarsigner -verify android-release-unsigned.apk
+- mv android-release-unsigned.apk geokh.apk
+deploy:
+  provider: releases
+  api_key: $TOKEN
+  file: geokh.apk
+  skip_cleanup: true
+  on:
+    tags: true

@@ -1,0 +1,23 @@
+#accueil {
+    background-image: url('../img/partie/background-accueil.jpeg');
+    min-height: 100vh;
+    background-size: cover;
+}
+
+.main {
+    width: 75%;
+    margin: 50% auto auto;
+}
+
+.accueil_logo {
+    margin-bottom: 3rem;
+}
+
+.main_paragraph {
+    color: white;
+    font-size: small;
+}
+
+.main_paragraph_first {
+    margin-top: 3rem;
+}

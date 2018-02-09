@@ -1,0 +1,146 @@
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+section, #accueil, #cgu, #connexion, #compass, #qr_code, #question, #reponse, #entrepreneurs, #entrepreneur_mystere, #scores {
+    overflow-y: auto;
+}
+
+input[type='text'] {
+    height: 41px;
+}
+
+label {
+    font-size: 1.4em;
+    margin: 10px;
+}
+
+.view {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* error */
+input.error {
+    background: red;
+    color: white;
+}
+
+label.error {
+    color: red;
+}
+
+/* Logo */
+
+.logo_entete img{
+    width: 65%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Bannière */
+.banniere_balise, .ent_nom {
+    background-image: url("../img/partie/banniere.png");
+    line-height: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.8em;
+    background-repeat: no-repeat;
+    height: 50px;
+    background-size: cover;
+}
+
+.correct.banniere_balise {
+    background-color: #38b449;
+}
+
+.partial.banniere_balise {
+    background-color: #ffa717;
+}
+
+.banniere_jaune {
+    background-image: url(../img/partie/banniere-jaune.png);
+    line-height: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 2.8rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-bottom: 0;
+}
+
+/* boutons */
+.button {
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    height: 87px;
+    margin-top: 70px;
+}
+
+#btn_connexion {
+    background-position-x: center;
+    border: 0;
+    background-color: #38b24a;
+    color: white;
+    font-size: 1.4em;
+    border-radius: 50px;
+    margin:0;
+}
+
+#btn_maj {
+    width: 5.5rem;
+    border-radius: 27rem;
+    border: outset 5px #2A5BA9;
+    background: #00bcf7;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 1px 2px 1px black;
+    color: white;
+}
+
+#btn_valider_question, #btn_compass, #btn_entrepreneur_mystere, #btn_scores, #btn_quitter, #btn_pass, #btn_flash, #modal_all_indice {
+    width: 40%;
+    border: 0;
+    background-color: #37b34a;
+    color: white;
+    font-size: 1.4em;
+    border-radius: 50px;
+    margin-top: 42px;
+    height: 64px;
+}
+
+#bouton_commencer_partie {
+    background-color: #ff3366;
+}
+
+#btn_pass, #modal_all_indice {
+    background-color: #909090;
+    margin-right: 20px;
+}
+
+/* footer */
+.footer {
+    background: url("../img/partie/bandeau-footer.png") no-repeat;
+    background-size: 100%;
+    height: 1%;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}

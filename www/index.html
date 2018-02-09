@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="css/accueil.css"/>
+    <link rel="stylesheet" type="text/css" href="css/partie.css"/>
+    <link rel="stylesheet" type="text/css" href="css/boussole.css"/>
+    <link rel="stylesheet" type="text/css" href="css/question.css"/>
+    <link rel="stylesheet" type="text/css" href="css/entrepreneur.css"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
+
+    <title>GeoK'H</title>
+    <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+</head>
+
+<body>
+<section class="app">
+
+    <!-- accueil -->
+
+    <section class="view" id="accueil">
+        <div class="main">
+            <div class="logo accueil_logo">
+                <img src="img/partie/logo-geokh-petit.png">
+            </div>
+            <div>
+                <button class="button" id="btn_connexion">
+                    JOUER
+                </button>
+            </div>
+            <div class="main_paragraph main_paragraph_first">
+                <p> Geok'H est une application de geocaching proposee par le Hubhouse.</p>
+            </div>
+            <div class="main_paragraph">
+                <p> En jouant une partie vous acceptez les <a href="#" id="btn_cgu">conditions generales
+                    d'utilisation.</a></p>
+            </div>
+
+            <button class="button" id="btn_maj">
+                MAJ
+            </button>
+        </div>
+        <div class="footer">
+        </div>
+    </section>
+
+    <!--  CGU  -->
+
+    <section class="view" id="cgu">
+        <h1>Conditions d’utilisation</h1>
+        <p>En accédant à « geok’h », vous acceptez les conditions suivantes.</p>
+        <h2>Généralités.</h2>
+        <p>
+            Vous êtes légalement responsable du support utilisé et des dommages ou dégâts liés au support et qui
+            pourraient intervenir lors du « geok’h ». Il vous est demandé de prendre connaissance et de respecter les
+            règles du jeu.
+            L’application « geok’h » est gratuite mais ne saurait être utilisée pour une fonction autre que celle pour
+            laquelle elle a été conçue. Il est formellement interdit de copier ou d’utiliser le tout ou une partie de «
+            geok’h » à des fins commerciales. Vous vous engagez a adopter un comportement correct et à respecter les
+            règles de bonne conduite ainsi que le réglement de l’Universite (langage approprié , respect du matériel et
+            des lieux, respect des personnes…).
+        </p>
+        <h2>Respect du matériel et des lieux.</h2>
+        Il est strictement interdit de déplacer des balises de leur lieu initial. De même qu’est strictement interdite
+        la dégradation des balises et des lieux de l’activité. Veillez à oeuvrer dans le respect de l’infrastructure du
+        Campus universitaire de Lille 1. Toute dégradation sera passible de sanctions. Si toutefois vous trouviez une
+        balise hors de son lieu initial, prévenez le HubHouse (numéro disponible sur la surface de la balise).
+        </p>
+        <h2>Choix du nom d’équipe.</h2>
+        <p>
+            Concernant le nom d’équipe, vous acceptez de ne pas choisir de contenu abusif, obscène, vulgaire,
+            diffamatoire, choquant, menaçant, a caractère sexuel ou autre qui peut transgresser les lois en vigueur.
+        </p>
+        <button id="btn_connexion_cgu">Compris !</button>
+    </section>
+
+    <!-- Lancement d'une partie -->
+
+    <section class="view" id="connexion">
+
+        <div class="logo_entete">
+            <img src="img/partie/logo-geokh.png" alt="logo_entete"/>
+        </div>
+        <form method="post" action="" id="form_connexion">
+
+            <div class="info">
+                <h3>Equipe :</h3>
+
+                <label for="form_equipe">Nom équipe</label>
+                <input type="text" name="form_equipe" id="form_equipe" required>
+            </div>
+
+            <div class="info">
+                <h3>Niveau :</h3>
+
+                <input type="radio" name="form_niveau" id="form_niveau1" value="1" checked="checked"/>
+                <label for="form_niveau1">Débutant</label>
+            </div>
+
+            <div class="info" id="parcours">
+                <h3>Parcours :</h3>
+
+                <div id="form_parcours" class="form_groupe"></div>
+                <br>
+            </div>
+
+            <input type="submit" name="submit" value="Lancer la partie" class="button" id="bouton_commencer_partie"/>
+        </form>
+
+        <div class="footer"></div>
+    </section>
+
+    <!-- recherche d'une balise -->
+
+    <section class="view" id="compass">
+
+        <div class="entete">
+            <div class="score">
+                <p><img src="img/partie/icone-score.png" alt="score"/></p>
+                <p>SCORE</p>
+                <p class="valeur"><strong><span></span></strong></p>
+            </div>
+            <div class="logo">
+                <img class="compass_logo" src="img/partie/logo-geokh.png" alt="logo"/>
+            </div>
+            <div class="temps">
+                <p><img src="img/partie/icone-temps.png" alt="temps"/></p>
+                <p>TEMPS</p>
+                <p><strong><span class="valeur" id="timer"></span></strong></p>
+            </div>
+            <div class="conseil">
+                <p class="banniere_balise">BALISE <span id="numero_balise"></span>/<span id="nombre_balise"></span></p>
+                <strong><p class="valeur" style="color: green">Lorem ipsum sit amet, consectetur adipiscing elit.</p>
+                </strong>
+                <p class="indice_icone"><img src="img/partie/icone-indice.png" class="image_indice_icone" alt="indice"/></p>
+                <p id="conseilHide" class="indice_texte">INDICE CACHÉ <strong>50 m(minimum)</strong></p>
+            </div>
+        </div>
+
+        <div class="boussole">
+            <img src="img/partie/boussole-aiguille.png" alt="boussole" id="compass_elt">
+        </div>
+
+        <div class="informations_balise">
+            <div class="distance">
+                <p><img src="img/partie/icone-distance.png" alt="distance"/></p>
+                <p>DISTANCE</p>
+                <p><strong><span class="valeur">XXX</span> m</strong></p>
+            </div>
+            <div class="precision">
+                <p><img src="img/partie/icone-precision.png" alt="precision"/></p>
+                <p>PRÉCISION</p>
+                <p><strong><span class="valeur">XXX</span> m</strong></p>
+            </div>
+        </div>
+
+        <button id="btn_pass" class="button">Passer la balise</button>
+        <button id="btn_flash" class="button">Flasher le code</button>
+
+        <div class="footer"></div>
+
+    </section>
+
+    <!-- QR Code Reader -->
+
+    <section class="view" id="qr_code">
+        <div id="qr_code_result">
+        </div>
+        <button id="btn_question">Confirmer</button>
+        <button id="btn_entrepreneurs">J'ai fini !</button>
+        <button id="btn_compass_retour">Retour</button>
+    </section>
+
+    <!-- question d'une balise -->
+
+    <section class="view" id="question">
+
+        <div class="entete">
+            <div class="score">
+                <p><img src="img/partie/icone-score.png" alt="score"/></p>
+                <p>SCORE</p>
+                <p class="valeur"><strong><span></span></strong></p>
+            </div>
+            <div class="logo">
+                <img class="compass_logo" src="img/partie/logo-geokh.png" alt="logo"/>
+            </div>
+            <div class="difficulte">
+                <p><img src="img/partie/difficulte.png" alt="difficulte"/></p>
+                <p>DIFFICULTÉ</p>
+                <p class="valeur"><strong><span></span></strong></p>
+            </div>
+            <p class="banniere_balise">QUESTION</p>
+        </div>
+
+        <div class="lib_question">
+            <p class="valeur"><span></span></p>
+        </div>
+
+        <form method="post" action="" id="form_question">
+            <div class="reponses">
+            </div>
+            <div class="pari">
+                <div class="range-slider">
+                    <p>
+                    <h1>Parier</h1></p>
+                    <input id="form_pari" type="range" value="75" min="0" max="150"
+                           onchange="modifierValeurSlider(this.value)">
+                    <p>
+                        <strong><span id="range_valeur">75</span> points</strong>
+                    </p>
+                </div>
+                <p>
+                    <input type="submit" name="submit" value="Répondre" id="btn_valider_question" class="button"/>
+                </p>
+            </div>
+        </form>
+
+        <div class="footer"></div>
+    </section>
+
+    <!-- reponse à la question d'une balise -->
+
+    <section class="view" id="reponse">
+        <div class="entete">
+            <div class="logo">
+                <img class="compass_logo" src="img/partie/logo-geokh.png" alt="logo"/>
+            </div>
+            <div class="correction">
+                <p class="correct banniere_balise">Bonne réponse</p>
+                <p class="partial banniere_balise">Réponse incomplète</p>
+                <p class="errone banniere_balise">Mauvaise réponse</p>
+            </div>
+        </div>
+
+        <div class="score">
+            <p><img src="img/partie/icone-score.png" alt="score"/></p>
+            <p><strong>BONUS :</strong></p>
+            <p class="bonus correct"><span>XXX</span> Points</p>
+            <p><strong>SCORE TOTAL :</strong></p>
+            <p class="valeur color_gold"><strong><span></span></strong><span> Points</span></p>
+        </div>
+        <div class="retour">
+            <p class="errone"><span class="title_reponse">Réponse :</span></p>
+            <p class="valeur"></p>
+            <p class="indice" id="reponse_indice"></p>
+            <p>
+                <button id="btn_compass">Continuer</button>
+            </p>
+        </div>
+
+        <div class="footer"></div>
+    </section>
+
+    <!-- listes des entrepreneurs -->
+
+    <section class="view" id="entrepreneurs">
+        <div class="entrepreneurs_wrapper">
+            <p id="lib_question"></p>
+            <div class="ents_miniatures">
+            </div>
+            <div id="ents_presentation">
+            </div>
+            <p class="indice" id="all_founded_indice"></p>
+            <p class="entrepreneur_bouton_conteneur">
+                <button id="modal_all_indice" class="button">Voir les indices</button>
+                <button id="btn_entrepreneur_mystere" class="button">C'est cet entrepreneur</button>
+            </p>
+        </div>
+
+        <div class="footer"></div>
+    </section>
+
+    <!-- l'entrepreneur mystere -->
+
+    <section class="view" id="entrepreneur_mystere">
+        <div class="logo_entete">
+            <img src="img/partie/logo-geokh.png" alt="logo_entete"/>
+        </div>
+
+        <div class="correction">
+            <p class="correct banniere_balise">Bonne réponse</p>
+            <p class="errone banniere_balise">Mauvaise réponse</p>
+        </div>
+        <div class="ent_presentation">
+            <img src="img/partie/user.svg" alt="" class="ent_img"/>
+            <p class="uppercase">L'entrepreneur mystère est <span class="couleur_entrepreneur"><span class="ent_myst_nom"></span> <span class="ent_myst_prenom"></span></span></p>
+        </div>
+        <div class="score">
+            <p><img src="img/partie/icone-score.png" alt="score"/></p>
+            <p><strong>BONUS</strong></p>
+            <span class="bonus"></span>
+            <p><strong>SCORE TOTAL :</strong> </p>
+            <span class="valeur"></span> <span class="color_gold"> Points</span>
+        </div>
+        <button id="btn_scores" class="button">Voir les scores</button>
+
+        <div class="footer"></div>
+    </section>
+
+    <!-- Scores finaux -->
+
+    <section class="view" id="scores">
+        <div class="logo_entete">
+            <img src="img/partie/logo-geokh.png" alt="logo_entete"/>
+        </div>
+
+        <p class="banniere_jaune">Félicitations <span class="team"></span></p>
+        <p class="niveau">
+            <p class="banniere_balise">Niveau </p>
+            <span class="niveau-valeur valeur"></span>
+        </p>
+        <p class="temps">
+            <p class="banniere_balise">Temps </p>
+            <span class="valeur" id="timer_final"></span>
+        </p>
+        <p class="balises">
+            <p class="banniere_balise">Balises </p>
+            <span class="balise-valeur valeur"></span> /
+            <span class="balise-maximum maximum"></span>
+        </p>
+        <p class="reponses">
+            <p class="banniere_balise">Bonnes réponses </p>
+            <span class="reponse-valeur valeur"></span> /
+            <span class="reponse-maximum maximum"></span>
+        </p>
+        <p class="points">
+            <p class="banniere_balise">Points </p>
+            <span class="point-valeur valeur"></span>
+        </p>
+        <button id="btn_quitter" class="button">Finir la partie</button>
+
+        <div class="footer"></div>
+    </section>
+</section>
+
+<script type="text/javascript" src="js/lib/jquery-rotate.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery-timer.js"></script>
+<script type="text/javascript" src="js/lib/latlon-spherical.js"></script>
+
+<script type="text/javascript" src="js/class/ProgressBar.js"></script>
+<script type="text/javascript" src="js/class/Compass.js"></script>
+<script type="text/javascript" src="js/class/Team.js"></script>
+<script type="text/javascript" src="js/class/AjaxRequest.js"></script>
+
+<script type="text/javascript" src="js/App.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+</body>
+</html>

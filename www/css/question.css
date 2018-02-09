@@ -1,0 +1,83 @@
+.entete .difficulte {
+    width: 21%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+p.banniere_balise {
+    margin: 0;
+}
+
+.lib_question, .ent_question {
+    color: #E7475E;
+    font-size: 1.4em;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 0 20px;
+    margin-bottom: 46px;
+}
+
+.reponses input[type="checkbox"], .reponses input[type="radio"] {
+}
+
+.reponses label {
+    margin-bottom: 10px;
+}
+
+.reponses .form_groupe, .ent_reponse {
+    text-align: left;
+    padding: 0 20px 10px 20px;
+    font-size: 0.9em;
+}
+
+.bonus.correct,#entrepreneur_mystere .score .bonus, #entrepreneur_mystere .score .valeur, .color_gold{
+    font-size: 2rem;
+    color: gold;
+    font-weight: bold;
+}
+
+.title_reponse{
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* slider */
+input[type=range] {
+    -webkit-appearance: none;
+    border: 1px solid white;
+    width: 450px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 450px;
+    height: 15px;
+    background: #ddd;
+    border: none;
+    border-radius: 30px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background: red;
+    margin-top: -16px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+#range_valeur {
+    font-size: 2em;
+}
+
+.pari {
+    margin: 20px 0;
+}
