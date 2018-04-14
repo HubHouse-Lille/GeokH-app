@@ -3,10 +3,6 @@
     background-size: 70%;
 }
 
-.landscape * {
-    transform: rotate(90deg);
-}
-
 .compass_logo {
     width: 50%;
     padding-top: 5px;

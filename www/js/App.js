@@ -135,11 +135,9 @@ var app = {
             startTimer();
         }
 
-        // Si le device est une tablette une ZenPad 10", la boussole est orentiée pour être gérée en landscape
+        // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
         if (device.model == "P028") {
-            var divCompass = document.getElementById('compass');
-            // Ajoute un id landscape sur la balise section pour modifier l'affichage en css
-            divCompass.setAttribute('class', 'landscape');
+            window.screen.orientation.lock('landscape');
         }
 
         // Affiche le message (dist min 50m)
@@ -166,6 +164,7 @@ var app = {
 
     // Affiche le scanner de QRCode
     showQrCodeView: function () {
+        window.screen.orientation.lock('portrait');
         var markToFind = 'codeBalise:' + this.infosParcours[this.currentMark]['Balise'].id;
 
         cordova.plugins.barcodeScanner.scan(
