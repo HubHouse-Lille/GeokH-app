@@ -60,8 +60,14 @@ var compass = {
                 angle = angle + 90;
             }
             */
+            console.log('avant : ' + Math.round(angle));
+            // envoyer uniquement un angle positif
+            if(Math.sign(angle) === -1){
+                angle = 360+angle;
+            }
 
             rotate(Math.round(angle));
+            console.log("après : " + Math.round(angle));
         }
     },
 
