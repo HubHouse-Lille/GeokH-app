@@ -14,7 +14,7 @@ var app = {
     indiceEntrepreneur: [],
     isTimerLoaded: false,
 
-// Initialisation cache les indices et affiche la vue actuelle
+    // Initialisation cache les indices et affiche la vue actuelle
     initialize: function () {
         $('.indice').hide();
 
@@ -133,6 +133,13 @@ var app = {
 
             this.isTimerLoaded = true;
             startTimer();
+        }
+
+        // Si le device est une tablette une ZenPad 10", la boussole est orentiée pour être gérée en landscape
+        if (device.model == "P028") {
+            var divCompass = document.getElementById('compass');
+            // Ajoute un id landscape sur la balise section pour modifier l'affichage en css
+            divCompass.setAttribute('class', 'landscape');
         }
 
         // Affiche le message (dist min 50m)
