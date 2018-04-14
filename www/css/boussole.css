@@ -99,4 +99,5 @@
 #compass_elt {
     clear: both;
     margin-top: 120px;
+    transition: all 1s ease;
 }
