@@ -69,10 +69,10 @@ function rotate(angle) {
     }
 
     if (ancienAngle == null || ancienneAngleBalise != app.currentMark) {
-        ancienAngle = angle;
+        ancienAngle = Math.round(angle);
     }
 
-    var newAngle = 0.5 * ancienAngle + 0.5 * angle;
+    var newAngle = Math.round(0.5 * ancienAngle + 0.5 * angle);
 
     $('#compass_elt').rotate(Math.round(newAngle));
 
