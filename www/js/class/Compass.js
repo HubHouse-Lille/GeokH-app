@@ -55,9 +55,18 @@ var compass = {
             var angle = compass.data.actualPosition.bearingTo(compass.data.destination) - compass.data.heading.magneticHeading;
 
             // Gestion de la tablette 10" Asus ZenPad qui configure la boussole en format paysage.
+            /*
             if (device.model == "P028") {
                 angle = angle + 90;
             }
+            */
+
+            // envoyer uniquement un angle positif
+            /*
+            if(Math.sign(angle) === -1){
+                angle = 360+angle;
+            }
+            */
 
             rotate(Math.round(angle));
         }

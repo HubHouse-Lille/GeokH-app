@@ -29,6 +29,7 @@ install:
 before_script:
 - cordova platform rm android
 - cordova platform add android@6.3.0
+- cordova plugin add cordova-android-support-gradle-release --variable ANDROID_SUPPORT_VERSION=24.0.0
 script:
 - cordova prepare
 - cordova build android --release
