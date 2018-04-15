@@ -135,6 +135,12 @@ var app = {
             startTimer();
         }
 
+        // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+        if (device.model == "P028") {
+            document.getElementById('compass').setAttribute('class', 'view landscape');
+            window.screen.orientation.lock('landscape');
+        }
+
         // Affiche le message (dist min 50m)
         document.getElementById('conseilHide').style['display'] = 'block';
         // Cache l'indice
@@ -190,6 +196,8 @@ var app = {
 
     // Affiche la question d'une balise
     showQuestionView: function () {
+        window.screen.orientation.lock('portrait');
+
         this.team.nbMarksFind++;
 
         var q = this.infosParcours[this.currentMark]['Question'];
@@ -380,6 +388,8 @@ var app = {
 
     // Question sur l'entrepreneur mystère si on est sur la dernière balise
     showQuestionEntrepreneurView: function () {
+        window.screen.orientation.lock('portrait');
+
         this.team.nbMarksFind++;
 
         for (var i = 0; i < this.entrepreneurs.length; i++) {
@@ -624,12 +634,6 @@ window.onload = function () {
 function onDeviceReady() {
     // Evenement boutons Android
     document.addEventListener('backbutton', onBackKeyDown, false);
-
-    // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-//        if (device.model == "P028") {
-    document.getElementById('compass').setAttribute('class', 'view landscape');
-    window.screen.orientation.lock('landscape');
-//        }
 
     window.plugins.insomnia.keepAwake();
 }
