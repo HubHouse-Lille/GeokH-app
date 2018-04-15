@@ -147,10 +147,19 @@ section.landscape .conseil .banniere_balise {
 }
 
 section.landscape .conseil .indice_icone {
-    float: left;
-    margin-left: 6px;
+    float: right;
+    margin-right: 6px;
+}
+
+section.landscape .conseil {
+    float: right;
+    width: 70%;
 }
 
 section.landscape .conseil #conseilHide, section.landscape .conseil p.valeur {
-    text-align: left;
+    text-align: right;
+}
+
+section.landscape .boussole {
+    margin: 170px auto auto;
 }
