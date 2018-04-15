@@ -161,15 +161,27 @@ section.landscape .conseil #conseilHide, section.landscape .conseil p.valeur {
 }
 
 section.landscape .boussole {
-    margin: 190px auto auto;
+    margin: 195px auto auto;
+}
+
+section.landscape #compass_elt {
+    margin-top: 70px;
 }
 
 section.landscape .informations_balise {
-    margin-top: -100px;
+    margin-top: -150px;
 }
 
 section.landscape #btn_pass, section.landscape #btn_flash {
     width: 20%;
-    margin-left: 14%;
-    margin-right: 14%;
+}
+
+section.landscape #btn_pass {
+    float: left;
+    margin-left: 10%;
+}
+
+section.landscape #btn_flash {
+    float: right;
+    margin-right: 10%;
 }
