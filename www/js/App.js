@@ -136,10 +136,10 @@ var app = {
         }
 
         // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-//        if (device.model == "P028") {
+        if (device.model == "P028") {
             document.getElementById('compass').setAttribute('class', 'landscape');
             window.screen.orientation.lock('landscape');
-//        }
+        }
 
         // Affiche le message (dist min 50m)
         document.getElementById('conseilHide').style['display'] = 'block';
@@ -171,8 +171,15 @@ var app = {
         cordova.plugins.barcodeScanner.scan(
             function (result) {
                 // Balise vide
-                if (result.text == '')
+                if (result.text == '') {
                     navigator.notification.confirm('Aucun code flashé', null, 'Resultat QR Code', ['OK']);
+
+                    // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+                    if (device.model == "P028") {
+                        document.getElementById('compass').setAttribute('class', 'landscape');
+                        window.screen.orientation.lock('landscape');
+                    }
+                }
 
                 // Bonne balise
                 else if (result.text == markToFind) {

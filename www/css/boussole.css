@@ -107,6 +107,11 @@ section.landscape {
     text-align: center;
 }
 
+section .entete {
+    margin-top: 10px;
+}
+
+
 section.landscape .entete .score, section.landscape .entete .temps {
     vertical-align: middle;
     float: right;
@@ -165,7 +170,7 @@ section.landscape .boussole {
 }
 
 section.landscape #compass_elt {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 section.landscape .informations_balise {
@@ -177,11 +182,13 @@ section.landscape #btn_pass, section.landscape #btn_flash {
 }
 
 section.landscape #btn_pass {
+    margin-top: -30px;
     float: left;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 section.landscape #btn_flash {
+    margin-top: -30px;
     float: right;
-    margin-right: 10%;
+    margin-right: 5%;
 }
