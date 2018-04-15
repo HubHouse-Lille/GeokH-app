@@ -104,7 +104,7 @@
 
 /* boussole design paysage */
 section.landscape {
-    background-color: red;
+    text-align: center;
 }
 
 section.landscape .entete .score, section.landscape .entete .temps {
@@ -113,7 +113,7 @@ section.landscape .entete .score, section.landscape .entete .temps {
 }
 
 section.landscape .entete .score, section.landscape .entete .temps {
-    width: 20%;
+    width: 15%;
     margin-right: 6px;
     text-align: center;
 }
@@ -134,7 +134,7 @@ section.landscape .entete .temps p:first-child {
 }
 
 section.landscape .entete .logo {
-    width: 40%;
+    width: 30%;
     float: left;
     display: inline-block;
     vertical-align: top;
@@ -148,12 +148,12 @@ section.landscape .conseil .banniere_balise {
 
 section.landscape .conseil .indice_icone {
     float: right;
-    margin-right: 6px;
+    margin-right: 6px !important;
 }
 
 section.landscape .conseil {
     float: right;
-    width: 70%;
+    width: 100%;
 }
 
 section.landscape .conseil #conseilHide, section.landscape .conseil p.valeur {
@@ -161,5 +161,15 @@ section.landscape .conseil #conseilHide, section.landscape .conseil p.valeur {
 }
 
 section.landscape .boussole {
-    margin: 170px auto auto;
+    margin: 190px auto auto;
+}
+
+section.landscape .informations_balise {
+    margin-top: -100px;
+}
+
+section.landscape #btn_pass, section.landscape #btn_flash {
+    width: 20%;
+    margin-left: 14%;
+    margin-right: 14%;
 }
