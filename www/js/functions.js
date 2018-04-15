@@ -59,24 +59,9 @@ function startTimer() {
     }
 }
 
-var ancienAngle = null;
-var ancienneAngleBalise = null;
-
 // Rotate boussole
 function rotate(angle) {
-    if (ancienneAngleBalise == null) {
-        ancienneAngleBalise = app.currentMark;
-    }
-
-    if (ancienAngle == null || ancienneAngleBalise != app.currentMark) {
-        ancienAngle = Math.round(angle);
-    }
-
-    var newAngle = Math.round(0.5 * ancienAngle + 0.5 * angle);
-
-    $('#compass_elt').rotate(Math.round(newAngle));
-
-    ancienAngle = newAngle;
+    $('#compass_elt').rotate(Math.round(angle));
 }
 
 var ancienneDistance = null;
