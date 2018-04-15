@@ -170,7 +170,7 @@ section.landscape .boussole {
 }
 
 section.landscape #compass_elt {
-    margin-top: 50px;
+    margin-top: 67px;
 }
 
 section.landscape .informations_balise {
@@ -182,13 +182,11 @@ section.landscape #btn_pass, section.landscape #btn_flash {
 }
 
 section.landscape #btn_pass {
-    margin-top: -30px;
     float: left;
     margin-left: 5%;
 }
 
 section.landscape #btn_flash {
-    margin-top: -30px;
     float: right;
     margin-right: 5%;
 }
