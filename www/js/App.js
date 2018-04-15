@@ -135,12 +135,6 @@ var app = {
             startTimer();
         }
 
-        // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-        if (device.model == "P028") {
-            document.getElementById('compass').setAttribute('class', 'view landscape');
-            window.screen.orientation.lock('landscape');
-        }
-
         // Affiche le message (dist min 50m)
         document.getElementById('conseilHide').style['display'] = 'block';
         // Cache l'indice
@@ -167,16 +161,8 @@ var app = {
     showQrCodeView: function () {
         var markToFind = 'codeBalise:' + this.infosParcours[this.currentMark]['Balise'].id;
 
-        window.screen.orientation.lock('portrait');
-
         cordova.plugins.barcodeScanner.scan(
             function (result) {
-                // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-                if (device.model == "P028") {
-                    document.getElementById('compass').setAttribute('class', 'view landscape');
-                    window.screen.orientation.lock('landscape');
-                }
-
                 // Balise vide
                 if (result.text == '') {
                     navigator.notification.confirm('Aucun code flashé', null, 'Resultat QR Code', ['OK']);
@@ -197,12 +183,6 @@ var app = {
             },
 
             function (error) {
-                // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-                if (device.model == "P028") {
-                    document.getElementById('compass').setAttribute('class', 'view landscape');
-                    window.screen.orientation.lock('landscape');
-                }
-
                 navigator.notification.confirm('Erreur du scanner: ' + error, null, 'Resultat QR Code', ['OK']);
             }
         );
@@ -644,6 +624,12 @@ window.onload = function () {
 function onDeviceReady() {
     // Evenement boutons Android
     document.addEventListener('backbutton', onBackKeyDown, false);
+
+    // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+//        if (device.model == "P028") {
+    document.getElementById('compass').setAttribute('class', 'view landscape');
+    window.screen.orientation.lock('landscape');
+//        }
 
     window.plugins.insomnia.keepAwake();
 }
