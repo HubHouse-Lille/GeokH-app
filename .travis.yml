@@ -29,6 +29,7 @@ install:
 before_script:
 - cordova platform rm android
 - cordova platform add android@6.3.0
+- echo "configurations.all {\nresolutionStrategy.force 'com.android.support:support-v4:26.0.0'\n}" >> platforms/android/build.gradle
 script:
 - cordova prepare
 - cordova build android --release

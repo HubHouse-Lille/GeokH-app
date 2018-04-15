@@ -59,24 +59,21 @@ function startTimer() {
     }
 }
 
-var ancienAngle = null;
-var ancienneAngleBalise = null;
+var newAngle = 0;
+var actualAngle;
 
 // Rotate boussole
 function rotate(angle) {
-    if (ancienneAngleBalise == null) {
-        ancienneAngleBalise = app.currentMark;
-    }
 
-    if (ancienAngle == null || ancienneAngleBalise != app.currentMark) {
-        ancienAngle = angle
-    }
+    // algorithme pour empêcher l'aiguille de faire des tours complets lorsque du passage d'angles positifs à négatif
+    newAngle = newAngle || 0;
+    actualAngle = newAngle % 360;
+    if ( actualAngle < 0 ) { actualAngle += 360; }
+    if ( actualAngle < 180 && (angle > (actualAngle + 180)) ) { newAngle -= 360; }
+    if ( actualAngle >= 180 && (angle <= (actualAngle - 180)) ) { newAngle += 360; }
+    newAngle += (angle - actualAngle);
 
-    var newAngle = 0.5 * ancienAngle + 0.5 * angle;
-
-    $('#compass_elt').rotate(newAngle);
-
-    ancienAngle = newAngle;
+    $('#compass_elt').rotate(Math.round(newAngle));
 }
 
 var ancienneDistance = null;
