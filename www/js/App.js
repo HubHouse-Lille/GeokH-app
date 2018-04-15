@@ -14,7 +14,7 @@ var app = {
     indiceEntrepreneur: [],
     isTimerLoaded: false,
 
-// Initialisation cache les indices et affiche la vue actuelle
+    // Initialisation cache les indices et affiche la vue actuelle
     initialize: function () {
         $('.indice').hide();
 
@@ -135,6 +135,12 @@ var app = {
             startTimer();
         }
 
+        // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+        if (device.model == "P028") {
+            document.getElementById('compass').setAttribute('class', 'view landscape');
+            window.screen.orientation.lock('landscape');
+        }
+
         // Affiche le message (dist min 50m)
         document.getElementById('conseilHide').style['display'] = 'block';
         // Cache l'indice
@@ -164,8 +170,9 @@ var app = {
         cordova.plugins.barcodeScanner.scan(
             function (result) {
                 // Balise vide
-                if (result.text == '')
+                if (result.text == '') {
                     navigator.notification.confirm('Aucun code flashé', null, 'Resultat QR Code', ['OK']);
+                }
 
                 // Bonne balise
                 else if (result.text == markToFind) {
@@ -189,6 +196,8 @@ var app = {
 
     // Affiche la question d'une balise
     showQuestionView: function () {
+        window.screen.orientation.lock('portrait');
+
         this.team.nbMarksFind++;
 
         var q = this.infosParcours[this.currentMark]['Question'];
@@ -379,6 +388,8 @@ var app = {
 
     // Question sur l'entrepreneur mystère si on est sur la dernière balise
     showQuestionEntrepreneurView: function () {
+        window.screen.orientation.lock('portrait');
+
         this.team.nbMarksFind++;
 
         for (var i = 0; i < this.entrepreneurs.length; i++) {

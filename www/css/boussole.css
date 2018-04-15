@@ -99,4 +99,98 @@
 #compass_elt {
     clear: both;
     margin-top: 120px;
+    transition: all 1s ease;
+}
+
+/* boussole design paysage */
+section.landscape {
+    text-align: center;
+}
+
+section .entete {
+    margin-top: 10px;
+}
+
+
+section.landscape .entete .score, section.landscape .entete .temps {
+    vertical-align: middle;
+    float: right;
+}
+
+section.landscape .entete .score, section.landscape .entete .temps {
+    width: 15%;
+    margin-right: 6px;
+    text-align: center;
+}
+
+section.landscape .entete .score p, section.landscape .entete .temps p {
+    display: inline-block;
+    text-align: center;
+}
+
+section.landscape .entete .score p:first-child, section.landscape .entete .temps p:first-child {
+    display: block;
+    height: 60px;
+    vertical-align: middle;
+}
+
+section.landscape .entete .temps p:first-child {
+    margin-bottom: 10px;
+}
+
+section.landscape .entete .temps #title-time {
+    margin-top: 6px;
+}
+
+section.landscape .entete .logo {
+    width: 30%;
+    float: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 6px;
+}
+
+section.landscape .conseil .banniere_balise {
+    line-height: 40px;
+    height: 40px;
+}
+
+section.landscape .conseil .indice_icone {
+    float: right;
+    margin-right: 6px !important;
+}
+
+section.landscape .conseil {
+    float: right;
+    width: 100%;
+}
+
+section.landscape .conseil #conseilHide, section.landscape .conseil p.valeur {
+    text-align: right;
+}
+
+section.landscape .boussole {
+    margin: 195px auto auto;
+}
+
+section.landscape #compass_elt {
+    margin-top: 67px;
+}
+
+section.landscape .informations_balise {
+    margin-top: -150px;
+}
+
+section.landscape #btn_pass, section.landscape #btn_flash {
+    width: 20%;
+}
+
+section.landscape #btn_pass {
+    float: left;
+    margin-left: 5%;
+}
+
+section.landscape #btn_flash {
+    float: right;
+    margin-right: 5%;
 }
