@@ -62,9 +62,11 @@ var compass = {
             */
 
             // envoyer uniquement un angle positif
-/*            if(Math.sign(angle) === -1){
+            /*
+            if(Math.sign(angle) === -1){
                 angle = 360+angle;
-            }*/
+            }
+            */
 
             rotate(Math.round(angle));
         }
