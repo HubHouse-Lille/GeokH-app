@@ -137,7 +137,7 @@ var app = {
 
         // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
         if (device.model == "P028") {
-            document.getElementById('compass').setAttribute('class', 'landscape');
+            document.getElementById('compass').setAttribute('class', 'view landscape');
             window.screen.orientation.lock('landscape');
         }
 
@@ -165,20 +165,21 @@ var app = {
 
     // Affiche le scanner de QRCode
     showQrCodeView: function () {
-        window.screen.orientation.lock('portrait');
         var markToFind = 'codeBalise:' + this.infosParcours[this.currentMark]['Balise'].id;
+
+        window.screen.orientation.lock('portrait');
 
         cordova.plugins.barcodeScanner.scan(
             function (result) {
+                // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+                if (device.model == "P028") {
+                    document.getElementById('compass').setAttribute('class', 'view landscape');
+                    window.screen.orientation.lock('landscape');
+                }
+
                 // Balise vide
                 if (result.text == '') {
                     navigator.notification.confirm('Aucun code flashé', null, 'Resultat QR Code', ['OK']);
-
-                    // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
-                    if (device.model == "P028") {
-                        document.getElementById('compass').setAttribute('class', 'landscape');
-                        window.screen.orientation.lock('landscape');
-                    }
                 }
 
                 // Bonne balise
@@ -196,6 +197,12 @@ var app = {
             },
 
             function (error) {
+                // Si le device est une tablette une ZenPad 10", la boussole est réglée pour être tenue en landscape
+                if (device.model == "P028") {
+                    document.getElementById('compass').setAttribute('class', 'view landscape');
+                    window.screen.orientation.lock('landscape');
+                }
+
                 navigator.notification.confirm('Erreur du scanner: ' + error, null, 'Resultat QR Code', ['OK']);
             }
         );

@@ -138,6 +138,10 @@ section.landscape .entete .temps p:first-child {
     margin-bottom: 10px;
 }
 
+section.landscape .entete .temps #title-time {
+    margin-top: 6px;
+}
+
 section.landscape .entete .logo {
     width: 30%;
     float: left;
